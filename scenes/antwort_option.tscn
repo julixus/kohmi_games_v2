@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://betch04yfac52"]
+
+[ext_resource type="Script" uid="uid://dbhldhnl4ku6j" path="res://scripts/antwort_option.gd" id="1_qn6mq"]
+
+[node name="Antwort Option" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -477.0
+offset_bottom = -580.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "option"
+script = ExtResource("1_qn6mq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
