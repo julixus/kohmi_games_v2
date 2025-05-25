@@ -1,43 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=13 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
+[ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
 [ext_resource type="Script" uid="uid://cfn1vjmqw8vvv" path="res://scripts/label.gd" id="2_jng0p"]
+[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
+[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
+
+[sub_resource type="Theme" id="Theme_bn6h1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0h63"]
+texture = ExtResource("4_m81w7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcje5"]
+texture = ExtResource("5_xq7j8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euwqo"]
+texture = ExtResource("4_m81w7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwwmd"]
+texture = ExtResource("5_xq7j8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16nxq"]
+texture = ExtResource("4_m81w7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcx78"]
+texture = ExtResource("5_xq7j8")
 
 [node name="Quiz" type="Node2D"]
 
-[node name="Antwort Option" parent="." instance=ExtResource("1_36y45")]
-offset_left = 285.0
-offset_top = 257.0
-offset_right = 783.0
-offset_bottom = 309.0
-option_id = 1
-
-[node name="Antwort Option2" parent="." instance=ExtResource("1_36y45")]
-offset_left = 285.0
-offset_top = 407.0
-offset_right = 783.0
-offset_bottom = 459.0
-option_id = 3
-
-[node name="Antwort Option3" parent="." instance=ExtResource("1_36y45")]
-offset_left = 285.0
-offset_top = 329.0
-offset_right = 783.0
-offset_bottom = 381.0
-option_id = 2
+[node name="QuizBg" type="Sprite2D" parent="."]
+position = Vector2(576.341, 324.25)
+scale = Vector2(0.923131, 0.923131)
+texture = ExtResource("1_w5ac1")
 
 [node name="Frage" type="Label" parent="."]
-offset_left = 289.0
-offset_top = 122.0
-offset_right = 782.0
-offset_bottom = 166.0
+offset_left = 140.0
+offset_top = 231.0
+offset_right = 633.0
+offset_bottom = 275.0
 text = "Frage"
 script = ExtResource("2_jng0p")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 976.0
-offset_top = 311.0
-offset_right = 1016.0
-offset_bottom = 334.0
+offset_left = 1040.0
+offset_top = 48.0
+offset_right = 1083.0
+offset_bottom = 71.0
 text = "Score"
 script = ExtResource("2_jng0p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 136.0
+offset_top = 281.0
+offset_right = 1005.0
+offset_bottom = 500.0
+theme_override_constants/separation = 75
+
+[node name="Antwort Option" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+layout_mode = 2
+theme = SubResource("Theme_bn6h1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_t0h63")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lcje5")
+option_id = 1
+
+[node name="Antwort Option2" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_euwqo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
+option_id = 3
+
+[node name="Antwort Option3" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_16nxq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xcx78")
+option_id = 2

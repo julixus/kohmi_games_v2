@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://cfcbdx13jbbth"]
+[gd_scene load_steps=3 format=3 uid="uid://dnxd53knhx4vo"]
+
+[ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih0h6"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Grafikfehler" type="Node2D"]
+script = ExtResource("1_ewubi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -593.0
+offset_top = -338.0
+offset_right = 589.0
+offset_bottom = 336.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ih0h6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.00001, -4)
+rotation = 1.5708
+scale = Vector2(0.0863601, 0.0863602)
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 149.0
+offset_top = -70.0
+offset_right = 193.0
+offset_bottom = -46.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -421.0
+offset_top = -188.0
+offset_right = -381.0
+offset_bottom = -165.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Punkte: 0"
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
