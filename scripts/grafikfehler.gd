@@ -15,13 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	label.text = "Punkte: " + str(punkte)
 	if Input.is_action_just_pressed("TurnLeft") || punkte == 1:
-		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler1.jpg")
+		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler2.jpg")
 		check_button.position = Vector2(90, -65)
 	if Input.is_action_just_pressed("TurnRight") || punkte == 2:
-		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler2.jpg")
+		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler3.jpg")
 		check_button.position = Vector2(180, -130)
 	if Input.is_action_just_pressed("Move") || punkte == 3:
-		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler3.jpg")
+		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler1.jpg")
 		check_button.position = Vector2(-60, -225)
 
 
