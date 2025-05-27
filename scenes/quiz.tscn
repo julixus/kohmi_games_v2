@@ -14,16 +14,16 @@ texture = ExtResource("4_m81w7")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcje5"]
 texture = ExtResource("5_xq7j8")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euwqo"]
-texture = ExtResource("4_m81w7")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwwmd"]
-texture = ExtResource("5_xq7j8")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16nxq"]
 texture = ExtResource("4_m81w7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcx78"]
+texture = ExtResource("5_xq7j8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euwqo"]
+texture = ExtResource("4_m81w7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwwmd"]
 texture = ExtResource("5_xq7j8")
 
 [node name="Quiz" type="Node2D"]
@@ -32,6 +32,7 @@ texture = ExtResource("5_xq7j8")
 position = Vector2(576.341, 324.25)
 scale = Vector2(0.923131, 0.923131)
 texture = ExtResource("1_w5ac1")
+metadata/_edit_lock_ = true
 
 [node name="Frage" type="Label" parent="."]
 offset_left = 140.0
@@ -52,25 +53,28 @@ script = ExtResource("2_jng0p")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 136.0
 offset_top = 281.0
-offset_right = 1005.0
-offset_bottom = 500.0
-theme_override_constants/separation = 75
+offset_right = 1019.0
+offset_bottom = 499.0
+theme_override_constants/separation = 15
 
 [node name="Antwort Option" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme = SubResource("Theme_bn6h1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_t0h63")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lcje5")
 option_id = 1
 
-[node name="Antwort Option2" parent="VBoxContainer" instance=ExtResource("1_36y45")]
-layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_euwqo")
-theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
-option_id = 3
-
 [node name="Antwort Option3" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_16nxq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xcx78")
 option_id = 2
+
+[node name="Antwort Option2" parent="VBoxContainer" instance=ExtResource("1_36y45")]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_euwqo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
+option_id = 3
