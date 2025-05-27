@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcffp0x0djf0n"
-path="res://.godot/imported/Snake_Background.png-745dfaf36b66742fb4c81358a836e5b5.ctex"
+uid="uid://dxyew2wfl6vpr"
+path="res://.godot/imported/Pseudo_Brett.png-533e5b55766f2fefa8e76354dfeb6706.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Snake_Background.png"
-dest_files=["res://.godot/imported/Snake_Background.png-745dfaf36b66742fb4c81358a836e5b5.ctex"]
+source_file="res://res/Pseudo_Brett.png"
+dest_files=["res://.godot/imported/Pseudo_Brett.png-533e5b55766f2fefa8e76354dfeb6706.ctex"]
 
 [params]
 

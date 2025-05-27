@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://1hddi4ayyy46"]
 
-[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://scenes/Pseudo_Brett.png" id="1_8a66w"]
+[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://res/Pseudo_Brett.png" id="1_8a66w"]
 [ext_resource type="Texture2D" uid="uid://dwyb68n6cppap" path="res://icon.svg" id="3_ap86w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_erv5y"]

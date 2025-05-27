@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://g3yb1qrf5bnm"]
 
-[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://scenes/Pseudo_Brett.png" id="1_8a66w"]
+[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://res/Pseudo_Brett.png" id="1_8a66w"]
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="Texture2D" uid="uid://sfockqaqaaft" path="res://res/kohmi_pseudocode.jpg" id="2_07wj8"]
 [ext_resource type="Texture2D" uid="uid://beshmtty2b4xu" path="res://res/world_tileset.png" id="3_lp43q"]
