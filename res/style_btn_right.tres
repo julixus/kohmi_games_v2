@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ciruo833glf5x"]
+
+[ext_resource type="Texture2D" uid="uid://xhcd2tntcw04" path="res://res/Quiz-Falsch.webp" id="1_ucqau"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pday4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8rxf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwk5m"]
+content_margin_left = 20.0
+texture = ExtResource("1_ucqau")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5yui"]
+
+[sub_resource type="FontFile" id="FontFile_pday4"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[resource]
+default_font = SubResource("FontFile_pday4")
+Button/colors/font_color = Color(0.768627, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_pday4")
+Button/styles/focus = SubResource("StyleBoxEmpty_g8rxf")
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxTexture_xwk5m")
+Button/styles/pressed = SubResource("StyleBoxEmpty_m5yui")

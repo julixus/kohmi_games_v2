@@ -1,29 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=14 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
 [ext_resource type="Script" uid="uid://cfn1vjmqw8vvv" path="res://scripts/label.gd" id="2_jng0p"]
+[ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="2_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
+[ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
 
-[sub_resource type="Theme" id="Theme_bn6h1"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0h63"]
+content_margin_left = 20.0
 texture = ExtResource("4_m81w7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcje5"]
+content_margin_left = 20.0
 texture = ExtResource("5_xq7j8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16nxq"]
+content_margin_left = 20.0
 texture = ExtResource("4_m81w7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xcx78"]
+content_margin_left = 20.0
 texture = ExtResource("5_xq7j8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euwqo"]
+content_margin_left = 20.0
 texture = ExtResource("4_m81w7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwwmd"]
+content_margin_left = 20.0
 texture = ExtResource("5_xq7j8")
 
 [node name="Quiz" type="Node2D"]
@@ -36,10 +42,14 @@ metadata/_edit_lock_ = true
 
 [node name="Frage" type="Label" parent="."]
 offset_left = 140.0
-offset_top = 231.0
-offset_right = 633.0
-offset_bottom = 275.0
+offset_top = 218.0
+offset_right = 1016.0
+offset_bottom = 290.0
+theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
+theme_override_fonts/font = ExtResource("2_xq7j8")
+theme_override_font_sizes/font_size = 22
 text = "Frage"
+autowrap_mode = 3
 script = ExtResource("2_jng0p")
 
 [node name="Score" type="Label" parent="."]
@@ -60,21 +70,29 @@ theme_override_constants/separation = 15
 [node name="Antwort Option" parent="VBoxContainer" instance=ExtResource("1_36y45")]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-theme = SubResource("Theme_bn6h1")
+theme = ExtResource("4_xq7j8")
+theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_t0h63")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lcje5")
+alignment = 0
 option_id = 1
 
 [node name="Antwort Option3" parent="VBoxContainer" instance=ExtResource("1_36y45")]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme = ExtResource("4_xq7j8")
+theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_16nxq")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xcx78")
+alignment = 0
 option_id = 2
 
 [node name="Antwort Option2" parent="VBoxContainer" instance=ExtResource("1_36y45")]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+theme = ExtResource("4_xq7j8")
+theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_euwqo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
+alignment = 0
 option_id = 3

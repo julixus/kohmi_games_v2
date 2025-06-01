@@ -6,9 +6,10 @@ func _ready() -> void:
 	if name == "Frage":
 		print("label counter: ", Global.label_counter)
 		if len(questions) > Global.label_counter:
-			text = questions[Global.label_counter].question
+			text = "> [" + str(Global.label_counter+1) + "/" + str(len(questions)) + "] " + questions[Global.label_counter].question
 		else:
-			text = questions[len(questions)-1].question
+			text = "> [" + str(Global.label_counter) + "/" + str(len(questions)) + "] " + questions[len(questions)-1].question
 	if name == "Score":
 		text = var_to_str(Global.score_quiz)
-		Global.label_counter += 1
+		if (Global.label_counter < len(questions)):
+			Global.label_counter += 1

@@ -6,13 +6,15 @@ extends Node2D
 @onready var goal_button: Button = $UI/Goal_Button
 @onready var tile_area: Area2D = $Tile_Area
 @onready var icon: Sprite2D = $Icon
+@onready var score_label: Label = $UI/Score_Label
+
 
 var icon_pos_x = 279
 var icon_pos_y = 157
 var icon_rotation = 0
-var icon_start = Vector2(279, 157)
-const GRID_SIZE = 30
-const OFFSET = Vector2(6,9)
+var icon_start = Vector2(180.5, 57)
+const GRID_SIZE = 41.98
+const OFFSET = Vector2(20.94,20.94)#Vector2(10,20)
 
 var direction : String
 var time_score = 0
@@ -25,12 +27,16 @@ var code = ["MoveForward();\nturnLeft();\nmoveForward();", "MoveForward();\nmove
 func _ready() -> void:
 	var size : int = icon.scale.x
 	direction = "Up"
+	icon_pos_x = icon_start.x
+	icon_pos_y = icon_start.y
 	nextCode(0)
 	moveButton(0)
 
 
 func _process(delta: float) -> void:
-	header.text = "Kohmi Connection Protokoll\n\nConnection Status: Good\n\nTime: "+time_label+"\n\nScore: "+str(score)
+	header.text = time_label
+	score_label.text = str(score)
+	
 	icon.position = Vector2(icon_pos_x, icon_pos_y)
 	icon.rotation_degrees = icon_rotation
 	
@@ -63,8 +69,13 @@ func _on_goal_button_pressed() -> void:
 func _on_tile_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton && event.pressed):
 		print ("incorrect")
-		var mouse_pos = get_local_mouse_position() - OFFSET
-		var grid_pos = snap_to_grid(mouse_pos)
+		var mouse_pos = get_global_mouse_position()# + OFFSET #global weil gelegt von 0/0 bis +x/+x statt local mit -x/-x bis +x/+x
+		#var mouse_pos = get_local_mouse_position()
+		print("mouse pos: "+str(mouse_pos))
+		var grid_pos = snap_to_grid(mouse_pos)# - Vector2(167,167) #Alles scheiße Digga wtt
+		grid_pos = grid_pos - Vector2(183,180)
+		#grid_pos = grid_pos * Vector2(1.03, 1.03)
+		print("grid pos: "+ str(grid_pos))
 		draw_rectangle_at(grid_pos)
 		
 func snap_to_grid(pos: Vector2) -> Vector2:
@@ -75,10 +86,10 @@ func snap_to_grid(pos: Vector2) -> Vector2:
 	
 func draw_rectangle_at(pos: Vector2) -> void:
 	var rect = ColorRect.new()
-	rect.color = Color.BLUE
-	rect.size = Vector2(GRID_SIZE, GRID_SIZE)
-	rect.position = pos - OFFSET
-	rect.modulate = Color(1,1,1,0.5)
+	rect.color = Color(0,70,0,0.5)
+	rect.size = Vector2(GRID_SIZE/2, GRID_SIZE/2)
+	rect.position = pos + Vector2(GRID_SIZE/4, GRID_SIZE/4) #- OFFSET #blöder hs nimmt die position als local und nicht global position -> offset nicht überall gleich
+	print("rect position: " + str(rect.position))
 	add_child(rect)
 	await wait(0.3)
 	rect.queue_free()
@@ -90,7 +101,7 @@ func nextCode(index: int):
 		print("kein neuer Code vorhanden")
 	
 func moveButton(position: int):
-	var buttonPositions = [Vector2(235, 113), Vector2(263, 83), Vector2(174, 83)]
+	var buttonPositions = [Vector2(117, 113), Vector2(263, 83), Vector2(174, 83)]
 	if (position < len(buttonPositions)):
 		goal_button.position = buttonPositions[position]
 	else:

@@ -1,19 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=20 format=3 uid="uid://g3yb1qrf5bnm"]
 
-[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://res/Pseudo_Brett.png" id="1_8a66w"]
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
-[ext_resource type="Texture2D" uid="uid://sfockqaqaaft" path="res://res/kohmi_pseudocode.jpg" id="2_07wj8"]
-[ext_resource type="Texture2D" uid="uid://beshmtty2b4xu" path="res://res/world_tileset.png" id="3_lp43q"]
-[ext_resource type="Script" uid="uid://chux7parjlmhh" path="res://scripts/tile_map.gd" id="4_5o0ki"]
+[ext_resource type="Texture2D" uid="uid://b7q8mqaqqf5ry" path="res://res/pseudocode_bg.png" id="2_07wj8"]
+[ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
 [ext_resource type="Texture2D" uid="uid://dwyb68n6cppap" path="res://icon.svg" id="6_11llr"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_erv5y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fblwc"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yhuf"]
-bg_color = Color(0.02202, 0.0953184, 0.0907457, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o0ki"]
+size = Vector2(727.5, 475)
 
 [sub_resource type="Theme" id="Theme_8ay4w"]
 
@@ -42,143 +35,10 @@ bg_color = Color(0, 0, 1, 0.298039)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvvvs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o0ki"]
-size = Vector2(512.5, 339)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5o0ki"]
-texture = ExtResource("3_lp43q")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-8:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-3:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-8:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-7:8/0 = 0
-8:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-7:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-6:10/0 = 0
-0:11/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-4:11/0 = 0
-5:11/0 = 0
-0:12/0 = 0
-1:12/0 = 0
-2:12/0 = 0
-3:12/0 = 0
-4:12/0 = 0
-0:13/0 = 0
-1:13/0 = 0
-2:13/0 = 0
-3:13/0 = 0
-4:13/0 = 0
-5:13/0 = 0
-0:14/0 = 0
-1:14/0 = 0
-2:14/0 = 0
-3:14/0 = 0
-4:14/0 = 0
-0:15/0 = 0
-1:15/0 = 0
-2:15/0 = 0
-3:15/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_07wj8"]
-sources/0 = SubResource("TileSetAtlasSource_5o0ki")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
 
 [node name="Pseudocode" type="Node2D"]
+position = Vector2(184, 181)
 script = ExtResource("1_n8srr")
 
 [node name="Timer" type="Timer" parent="."]
@@ -186,68 +46,48 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.06218, 3.24995)
+scale = Vector2(0.589686, 0.589686)
+texture = ExtResource("2_07wj8")
+
+[node name="Tile_Area" type="Area2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(-350.929, -300.584)
+scale = Vector2(1.69582, 1.69582)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Tile_Area"]
+visible = false
+z_index = 1
+position = Vector2(388.25, 229.5)
+shape = SubResource("RectangleShape2D_5o0ki")
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Sprite2D" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(13.1111, -7)
-scale = Vector2(0.748889, 0.748889)
-texture = ExtResource("2_07wj8")
-
-[node name="BackgroundPanel" type="Panel" parent="UI"]
-material = SubResource("CanvasItemMaterial_erv5y")
-layout_mode = 0
-offset_left = -587.0
-offset_top = -346.0
-offset_right = 614.0
-offset_bottom = 329.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fblwc")
-
-[node name="Header_Panel" type="Panel" parent="UI"]
-material = SubResource("CanvasItemMaterial_erv5y")
-layout_mode = 0
-offset_left = -538.0
-offset_top = -302.0
-offset_right = -87.0
-offset_bottom = 300.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7yhuf")
-
-[node name="Command_Panel" type="Panel" parent="UI"]
-material = SubResource("CanvasItemMaterial_erv5y")
-layout_mode = 0
-offset_left = -1.0
-offset_top = -293.0
-offset_right = 557.0
-offset_bottom = -34.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7yhuf")
+metadata/_edit_use_anchors_ = true
 
 [node name="Header_Label" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = -283.0
-offset_right = 261.0
-offset_bottom = -88.0
+offset_left = 477.0
+offset_top = -248.0
+offset_right = 528.0
+offset_bottom = -225.0
 theme = SubResource("Theme_8ay4w")
 theme_override_colors/font_color = Color(0, 0.694118, 0, 1)
-text = "Kohmi Connection Protokoll
-
-Connection Status: Good
-
-Time: 00:00
-
-Score: 0"
+theme_override_fonts/font = ExtResource("3_11llr")
+theme_override_font_sizes/font_size = 18
+text = "time"
+metadata/_edit_use_anchors_ = true
 
 [node name="Command_Label" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = -518.0
-offset_top = -289.0
-offset_right = -269.0
-offset_bottom = -22.0
+offset_left = -531.0
+offset_top = -172.0
+offset_right = -282.0
+offset_bottom = 95.0
 theme = SubResource("Theme_8ay4w")
 theme_override_colors/font_color = Color(0, 0.694118, 0, 1)
 text = "Manuelle Sequenz
@@ -256,14 +96,15 @@ text = "Manuelle Sequenz
 MoveLeft();
 MoveRight();
 MoveFront();"
+metadata/_edit_use_anchors_ = true
 
 [node name="Goal_Button" type="Button" parent="UI"]
 z_index = 1
 layout_mode = 0
-offset_left = 174.0
-offset_top = 82.0
-offset_right = 203.0
-offset_bottom = 111.0
+offset_left = 117.0
+offset_top = -7.0
+offset_right = 158.0
+offset_bottom = 33.0
 theme = SubResource("Theme_11llr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2dgal")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_imxnl")
@@ -276,47 +117,42 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mqcq8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_npq0p")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_npq0p")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_gvvvs")
+metadata/_edit_use_anchors_ = true
+
+[node name="Score_Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = -272.0
+offset_right = 527.0
+offset_bottom = -249.0
+theme_override_colors/font_color = Color(0, 0.796078, 0, 1)
+theme_override_fonts/font = ExtResource("3_11llr")
+theme_override_font_sizes/font_size = 18
+text = "score"
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 24.0
-offset_top = -9.0
-offset_right = 532.0
-offset_bottom = 320.0
+offset_left = -181.0
+offset_top = -179.0
+offset_right = 545.0
+offset_bottom = 291.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="Tile_Area" type="Area2D" parent="VBoxContainer"]
-z_index = 1
-position = Vector2(-27, 5)
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/Tile_Area"]
-z_index = 1
-position = Vector2(280.75, 161.5)
-shape = SubResource("RectangleShape2D_5o0ki")
-metadata/_edit_lock_ = true
-
-[node name="PseudoBrett" type="Sprite2D" parent="VBoxContainer"]
-position = Vector2(254, 165)
-scale = Vector2(29.875, 29.875)
-texture = ExtResource("1_8a66w")
-metadata/_edit_lock_ = true
-
-[node name="TileMap" type="TileMap" parent="."]
-visible = false
-position = Vector2(10, -35)
-scale = Vector2(2, 2)
-tile_set = SubResource("TileSet_07wj8")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 1, 131072, 131072, 1, 196608, 131072, 1, 262144, 131072, 1, 327680, 131072, 1, 393216, 131072, 1, 458752, 131072, 1, 524288, 131072, 1, 589824, 131072, 1, 1, 131072, 1, 65537, 131072, 1, 131073, 131072, 1, 196609, 131072, 1, 262145, 131072, 1, 327681, 131072, 1, 393217, 131072, 1, 458753, 131072, 1, 524289, 131072, 1, 589825, 131072, 1, 2, 131072, 1, 65538, 131072, 1, 131074, 131072, 1, 196610, 131072, 1, 262146, 131072, 1, 327682, 131072, 1, 393218, 131072, 1, 458754, 131072, 1, 524290, 131072, 1, 589826, 131072, 1, 3, 131072, 1, 65539, 131072, 1, 131075, 131072, 1, 196611, 131072, 1, 262147, 131072, 1, 327683, 131072, 1, 393219, 131072, 1, 458755, 131072, 1, 524291, 131072, 1, 589827, 131072, 1, 4, 131072, 1, 65540, 131072, 1, 131076, 131072, 1, 196612, 131072, 1, 262148, 131072, 1, 327684, 131072, 1, 393220, 131072, 1, 458756, 131072, 1, 524292, 131072, 1, 589828, 131072, 1, 5, 131072, 1, 65541, 131072, 1, 131077, 131072, 1, 196613, 131072, 1, 262149, 131072, 1, 327685, 131072, 1, 393221, 131072, 1, 458757, 131072, 1, 524293, 131072, 1, 589829, 131072, 1, 6, 131072, 1, 65542, 131072, 1, 131078, 131072, 1, 196614, 131072, 1, 262150, 131072, 1, 327686, 131072, 1, 393222, 131072, 1, 458758, 131072, 1, 524294, 131072, 1, 589830, 131072, 1, 7, 131072, 1, 65543, 131072, 1, 131079, 131072, 1, 196615, 131072, 1, 262151, 131072, 1, 327687, 131072, 1, 393223, 131072, 1, 458759, 131072, 1, 524295, 131072, 1, 589831, 131072, 1, 8, 131072, 1, 65544, 131072, 1, 131080, 131072, 1, 196616, 131072, 1, 262152, 131072, 1, 327688, 131072, 1, 393224, 131072, 1, 458760, 131072, 1, 524296, 131072, 1, 589832, 131072, 1, 9, 131072, 1, 65545, 131072, 1, 131081, 131072, 1, 196617, 131072, 1, 262153, 131072, 1, 327689, 131072, 1, 393225, 131072, 1, 458761, 131072, 1, 524297, 131072, 1, 589833, 131072, 1, 10, 131072, 1, 65546, 131072, 1, 131082, 131072, 1, 196618, 131072, 1, 262154, 131072, 1, 327690, 131072, 1, 393226, 131072, 1, 458762, 131072, 1, 524298, 131072, 1, 589834, 131072, 1, 11, 131072, 1, 65547, 131072, 1, 131083, 131072, 1, 196619, 131072, 1, 262155, 131072, 1, 327691, 131072, 1, 393227, 131072, 1, 458763, 131072, 1, 524299, 131072, 1, 589835, 131072, 1, 12, 131072, 1, 65548, 131072, 1, 131084, 131072, 1, 196620, 131072, 1, 262156, 131072, 1, 327692, 131072, 1, 393228, 131072, 1, 458764, 131072, 1, 524300, 131072, 1, 589836, 131072, 1, 13, 131072, 1, 65549, 131072, 1, 131085, 131072, 1, 196621, 131072, 1, 262157, 131072, 1, 327693, 131072, 1, 393229, 131072, 1, 458765, 131072, 1, 524301, 131072, 1, 589837, 131072, 1, 14, 131072, 1, 65550, 131072, 1, 131086, 131072, 1, 196622, 131072, 1, 262158, 131072, 1, 327694, 131072, 1, 393230, 131072, 1, 458766, 131072, 1, 524302, 131072, 1, 589838, 131072, 1, 15, 131072, 1, 65551, 131072, 1, 131087, 131072, 1, 196623, 131072, 1, 262159, 131072, 1, 327695, 131072, 1, 393231, 131072, 1, 458767, 131072, 1, 524303, 131072, 1, 589839, 131072, 1, 655360, 131072, 1, 655361, 131072, 1, 655362, 131072, 1, 655363, 131072, 1, 655364, 131072, 1, 655365, 131072, 1, 655366, 131072, 1, 655367, 131072, 1, 655368, 131072, 1, 655369, 131072, 1, 655370, 131072, 1, 655371, 131072, 1, 655372, 131072, 1, 655373, 131072, 1, 655374, 131072, 1, 655375, 131072, 1, 16, 131072, 1, 65552, 131072, 1, 131088, 131072, 1, 196624, 131072, 1, 262160, 131072, 1, 327696, 131072, 1, 393232, 131072, 1, 458768, 131072, 1, 524304, 131072, 1, 589840, 131072, 1, 655376, 131072, 1)
-script = ExtResource("4_5o0ki")
-
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(279, 157)
-scale = Vector2(0.234376, 0.234375)
+position = Vector2(208, 131)
+scale = Vector2(0.32, 0.32)
 texture = ExtResource("6_11llr")
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = -183.66
+offset_top = -180.435
+offset_right = -141.68
+offset_bottom = -138.455
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5o0ki")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Sprite2D/Tile_Area" to="." method="_on_tile_area_area_entered"]
+[connection signal="input_event" from="Sprite2D/Tile_Area" to="." method="_on_tile_area_input_event"]
 [connection signal="pressed" from="UI/Goal_Button" to="." method="_on_goal_button_pressed"]
-[connection signal="area_entered" from="VBoxContainer/Tile_Area" to="." method="_on_tile_area_area_entered"]
-[connection signal="input_event" from="VBoxContainer/Tile_Area" to="." method="_on_tile_area_input_event"]

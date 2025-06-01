@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://uxpbmaavac8e"]
+
+[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="1_12rec"]
+[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="2_neuiq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pday4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8rxf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_onvlk"]
+content_margin_left = 20.0
+texture = ExtResource("1_12rec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwk5m"]
+content_margin_left = 20.0
+texture = ExtResource("2_neuiq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5yui"]
+
+[resource]
+Button/colors/font_color = Color(0, 0.776471, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_pday4")
+Button/styles/focus = SubResource("StyleBoxEmpty_g8rxf")
+Button/styles/hover = SubResource("StyleBoxTexture_onvlk")
+Button/styles/normal = SubResource("StyleBoxTexture_xwk5m")
+Button/styles/pressed = SubResource("StyleBoxEmpty_m5yui")
