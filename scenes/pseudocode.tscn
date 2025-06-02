@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=21 format=3 uid="uid://g3yb1qrf5bnm"]
 
-[ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
+[ext_resource type="Script" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="Texture2D" uid="uid://b7q8mqaqqf5ry" path="res://res/pseudocode_bg.png" id="2_07wj8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
+[ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://res/Pseudo_Brett.png" id="5_k8rp3"]
 [ext_resource type="Texture2D" uid="uid://dwyb68n6cppap" path="res://icon.svg" id="6_11llr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o0ki"]
@@ -36,6 +37,7 @@ bg_color = Color(0, 0, 1, 0.298039)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvvvs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
+bg_color = Color(0.033359, 0, 0.503014, 1)
 
 [node name="Pseudocode" type="Node2D"]
 position = Vector2(184, 181)
@@ -144,11 +146,19 @@ position = Vector2(208, 131)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("6_11llr")
 
+[node name="PseudoBrett" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(181.182, 57.5)
+scale = Vector2(42.9198, 43.1818)
+texture = ExtResource("5_k8rp3")
+
 [node name="Panel" type="Panel" parent="."]
-offset_left = -183.66
-offset_top = -180.435
-offset_right = -141.68
-offset_bottom = -138.455
+visible = false
+modulate = Color(1, 1, 1, 0.560784)
+offset_left = -183.7
+offset_top = -180.0
+offset_right = -140.9
+offset_bottom = -136.8
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5o0ki")
 

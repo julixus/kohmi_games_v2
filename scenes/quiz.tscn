@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
-[ext_resource type="Script" uid="uid://cfn1vjmqw8vvv" path="res://scripts/label.gd" id="2_jng0p"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="2_jng0p"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="2_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
 [ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]

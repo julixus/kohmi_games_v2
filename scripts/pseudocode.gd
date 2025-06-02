@@ -13,7 +13,9 @@ var icon_pos_x = 279
 var icon_pos_y = 157
 var icon_rotation = 0
 var icon_start = Vector2(180.5, 57)
-const GRID_SIZE = 41.98
+#const GRID_SIZE = 41.98
+const GRID_SIZE_X = 42.9
+const GRID_SIZE_Y = 43.2
 const OFFSET = Vector2(20.94,20.94)#Vector2(10,20)
 
 var direction : String
@@ -80,15 +82,15 @@ func _on_tile_area_input_event(viewport: Node, event: InputEvent, shape_idx: int
 		
 func snap_to_grid(pos: Vector2) -> Vector2:
 	return Vector2(
-		floor(pos.x / GRID_SIZE) * GRID_SIZE,
-		floor(pos.y / GRID_SIZE) * GRID_SIZE
+		floor(pos.x / GRID_SIZE_X) * GRID_SIZE_X,
+		floor(pos.y / GRID_SIZE_Y) * GRID_SIZE_Y
 	)
 	
 func draw_rectangle_at(pos: Vector2) -> void:
 	var rect = ColorRect.new()
 	rect.color = Color(0,70,0,0.5)
-	rect.size = Vector2(GRID_SIZE/2, GRID_SIZE/2)
-	rect.position = pos + Vector2(GRID_SIZE/4, GRID_SIZE/4) #- OFFSET #blöder hs nimmt die position als local und nicht global position -> offset nicht überall gleich
+	rect.size = Vector2(GRID_SIZE_X, GRID_SIZE_Y)
+	rect.position = pos + Vector2(0.02, 0) #- OFFSET #blöder hs nimmt die position als local und nicht global position -> offset nicht überall gleich
 	print("rect position: " + str(rect.position))
 	add_child(rect)
 	await wait(0.3)
