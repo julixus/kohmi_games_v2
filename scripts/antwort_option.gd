@@ -10,11 +10,19 @@ var style_right = StyleBoxTexture.new()
 var style_wrong = StyleBoxTexture.new()
 
 
+
 func _ready() -> void:
+	if (question_counter == 1 and option_id == 1):
+		Global.shuffle_questions()
+	if (option_id == 1):
+		shuffle_answers()
+		print(Global.shuffled_answers)
+
+		
+		
 	style_right.texture = load("res://res/Quiz-richtig.webp")
 	style_right.content_margin_left = 20
 	style_wrong.texture = load("res://res/Quiz-Falsch.webp")
-	style_wrong
 	style_wrong.content_margin_left = 20
 	
 	if (option_id == 1):
@@ -25,7 +33,7 @@ func _ready() -> void:
 		text = "C. " + Global.shuffled_answers[option_id-1].text
 
 func _on_pressed() -> void:
-	if Global.shuffled_answers[option_id-1].is_true:
+	if Global.shuffled_answers[Global.random_questions[option_id-1]].is_true:
 		Global.score_quiz += 1
 		add_theme_stylebox_override("normal", style_right)
 		add_theme_stylebox_override("hover", style_right)
@@ -46,7 +54,7 @@ func _on_pressed() -> void:
 	get_tree().reload_current_scene()
 		
 func shuffle_answers():
-	Global.shuffled_answers = questions[question_counter].answers.duplicate()
+	Global.shuffled_answers = questions[Global.random_questions[question_counter]].answers.duplicate()
 	Global.shuffled_answers.shuffle()
 	
 func wait(seconds: float):

@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=15 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
-[ext_resource type="Script" path="res://scripts/label.gd" id="2_jng0p"]
+[ext_resource type="Script" uid="uid://cfn1vjmqw8vvv" path="res://scripts/label.gd" id="2_jng0p"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="2_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
 [ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq7j8"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0h63"]
 content_margin_left = 20.0
@@ -33,6 +36,12 @@ content_margin_left = 20.0
 texture = ExtResource("5_xq7j8")
 
 [node name="Quiz" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1182.0
+offset_bottom = 667.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xq7j8")
 
 [node name="QuizBg" type="Sprite2D" parent="."]
 position = Vector2(576.341, 324.25)

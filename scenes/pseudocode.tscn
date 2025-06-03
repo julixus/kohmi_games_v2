@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://g3yb1qrf5bnm"]
 
-[ext_resource type="Script" path="res://scripts/pseudocode.gd" id="1_n8srr"]
+[ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="Texture2D" uid="uid://b7q8mqaqqf5ry" path="res://res/pseudocode_bg.png" id="2_07wj8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
 [ext_resource type="Texture2D" uid="uid://dxyew2wfl6vpr" path="res://res/Pseudo_Brett.png" id="5_k8rp3"]

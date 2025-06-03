@@ -3,6 +3,10 @@ extends Node
 var score_quiz = 0
 var question_counter = 1
 var label_counter = 0
+var random_questions = []
+
+var shuffled_all
+
 
 var questions = [
 	{
@@ -88,3 +92,9 @@ var questions = [
 ];
 
 var shuffled_answers = questions[0].answers
+
+func shuffle_questions():
+	for n in len(questions):
+		random_questions.push_back(n)
+	random_questions.shuffle()
+	print(random_questions)
