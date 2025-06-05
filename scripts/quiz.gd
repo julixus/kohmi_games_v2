@@ -4,6 +4,10 @@ var style_wrong = StyleBoxTexture.new()
 var counter = 0
 var shuffled_all
 var score = 0
+var option_buttons
+var question_order = [0, 1, 2]
+var can_click = true
+const MAX_QUESTIONS = 10
 @export var option_id = 0
 @onready var option_1: Button = $"VBoxContainer/Antwort Option"
 @onready var option_3: Button = $"VBoxContainer/Antwort Option3"
@@ -13,7 +17,9 @@ var score = 0
 
 
 
+
 func _ready() -> void:
+	option_buttons = [option_1, option_2, option_3]
 	load_textures()
 	shuffle_all()
 	new_question()
@@ -31,40 +37,49 @@ func shuffle_all():
 	shuffled_all = Global.shuffled_all
 
 func new_question():
-	frage.text = "> [" + str(counter+1) + "/" +str(len(shuffled_all)) + "] " + shuffled_all[counter].question
+	frage.text = "> [" + str(counter+1) + "/" +str(MAX_QUESTIONS) + "] " + shuffled_all[counter].question
 	
 
 func load_answers():
-	option_1.text = "A. " + shuffled_all[counter].answers[0].text
-	option_2.text = "B. " + shuffled_all[counter].answers[1].text
-	option_3.text = "C. " + shuffled_all[counter].answers[2].text
+	question_order.shuffle()
+	option_1.text = "A. " + shuffled_all[counter].answers[question_order[0]].text
+	option_2.text = "B. " + shuffled_all[counter].answers[question_order[1]].text
+	option_3.text = "C. " + shuffled_all[counter].answers[question_order[2]].text
 	
 func _on_antwort_option_pressed():
-	handle_option_pressed(1)
+	if (counter < MAX_QUESTIONS and can_click):
+		handle_option_pressed(0)
 
 func _on_antwort_option_3_pressed() -> void:
-	handle_option_pressed(3)
+	if (counter < MAX_QUESTIONS and can_click):
+		handle_option_pressed(2)
 
 func _on_antwort_option_2_pressed() -> void:
-	handle_option_pressed(2)
+	if (counter < MAX_QUESTIONS and can_click):	
+		handle_option_pressed(1)
 	
 func handle_option_pressed(index):
-	var option = str_to_var("option_" + str(index))
-	print(option)
-	if shuffled_all[counter].answers[index - 1].is_true:
-		score = score + 1
+	var option = option_buttons[index]
+	
+	if shuffled_all[counter].answers[question_order[index]].is_true:
+		score += 1
 		option.add_theme_stylebox_override("normal", style_right)
 		option.add_theme_stylebox_override("hover", style_right)
 	else:
-		option.add_theme_color_override("normal", style_wrong)
-		option.add_theme_color_override("hover", style_wrong)
-	counter = counter + 1
+		option.add_theme_stylebox_override("normal", style_wrong)
+		option.add_theme_stylebox_override("hover", style_wrong)
+	counter += 1
 	score_label.text = str(score)
+	can_click = false #verhindert spammen von Anworten, ansonsten von zb Frage 3 auf Frage 10 instant
 	await wait(1)
+	can_click = true
 	option.remove_theme_stylebox_override("normal")
 	option.remove_theme_stylebox_override("hover")
-	new_question()
-	load_answers()
+	if (counter < MAX_QUESTIONS):
+		new_question()
+		load_answers()
+	else:
+		print("Das waren alle Fragen")
 	
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout

@@ -1,10 +1,5 @@
 extends Node
 
-var score_quiz = 0
-var question_counter = 1
-var label_counter = 0
-var random_questions = []
-
 var shuffled_all
 
 
@@ -88,13 +83,69 @@ var questions = [
 			{"text": "Zum Schreiben von E-Mails", "is_true": false},
 			{"text": "Zum Erstellen von Videos", "is_true": false}
 		]
-	}
+	},
+	{
+	"question": "Was ist ein typisches Dateiformat für Audiodateien?",
+	"answers": [
+		{"text": ".wav", "is_true": true},
+		{"text": ".docx", "is_true": false},
+		{"text": ".png", "is_true": false}
+	]
+	},
+	{
+		"question": "Was ist ein typisches Anwendungsgebiet von Blender?",
+		"answers": [
+			{"text": "3D-Modellierung und Animation", "is_true": true},
+			{"text": "Musikstreaming", "is_true": false},
+			{"text": "Textverarbeitung", "is_true": false}
+		]
+	},
+	{
+		"question": "Was versteht man unter CSS in der Webentwicklung?",
+		"answers": [
+			{"text": "Cascading Style Sheets", "is_true": true},
+			{"text": "Creative Software Suite", "is_true": false},
+			{"text": "Central Server System", "is_true": false}
+		]
+	},
+	{
+		"question": "Was beschreibt der Begriff 'Prototyping' im UX-Design?",
+		"answers": [
+			{"text": "Das Erstellen von Testversionen eines Produkts", "is_true": true},
+			{"text": "Das Verschlüsseln von Daten", "is_true": false},
+			{"text": "Das Drucken von Handbüchern", "is_true": false}
+		]
+	},
+	{
+		"question": "Welche Software wird häufig für Videoschnitt verwendet?",
+		"answers": [
+			{"text": "Adobe Premiere Pro", "is_true": true},
+			{"text": "Google Chrome", "is_true": false},
+			{"text": "VLC Media Player", "is_true": false}
+		]
+	},
+	{
+		"question": "Was ist die binäre Zahl 1001 in decimal?",
+		"answers": [
+			{"text": "9", "is_true": true},
+			{"text": "5", "is_true": false},
+			{"text": "18", "is_true": false}
+		]
+	},
+	{
+		"question": "Wie verändert sich bei einer Kamera die Tiefenschärfe, wenn das Objektiv länger wird?",
+		"answers": [
+			{"text": "Objekte im Bild werden gleich scharft (TF geht hoch)", "is_true": true},
+			{"text": "Objekte im Bild werden verschieden scharft (TF geht runter)", "is_true": false},
+			{"text": "TF ist davon nicht abhängig", "is_true": false}
+		]
+	},
+	{
+		"question": "Was macht ein VPN?",
+		"answers": [
+			{"text": "Es verbindet ein Gerät in einem bestehenden Netzwerk mit einem anderen Netzwerk", "is_true": true},
+			{"text": "Es dient als Virenscanner", "is_true": false},
+			{"text": "Es verbindet IP Adresse und Domäne (z.B. Adresse 8.8.8.8 mit Google.com)", "is_true": false}
+		]
+	},
 ];
-
-var shuffled_answers = questions[0].answers
-
-func shuffle_questions():
-	for n in len(questions):
-		random_questions.push_back(n)
-	random_questions.shuffle()
-	print(random_questions)
