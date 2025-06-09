@@ -25,6 +25,12 @@ func _ready() -> void:
 	new_question()
 	load_answers()
 	
+func _process(delta: float) -> void:
+	var green_clr = Color(0.0, 0.776, 0.0)
+	#option_1.add_theme_color_override("font_color", Color.BROWN)
+	#option_2.add_theme_color_override("font_color", Color.BROWN)
+	#option_3.add_theme_color_override("font_color", Color.BROWN)
+	
 func load_textures():
 	style_right.texture = load("res://res/Quiz-richtig.webp")
 	style_right.content_margin_left = 20
@@ -43,9 +49,9 @@ func new_question():
 func load_answers():
 	question_order.shuffle()
 	option_1.text = "A. " + shuffled_all[counter].answers[question_order[0]].text
-	option_2.text = "B. " + shuffled_all[counter].answers[question_order[1]].text
-	option_3.text = "C. " + shuffled_all[counter].answers[question_order[2]].text
-	
+	option_2.text = "C. " + shuffled_all[counter].answers[question_order[1]].text
+	option_3.text = "B. " + shuffled_all[counter].answers[question_order[2]].text
+		
 func _on_antwort_option_pressed():
 	if (counter < MAX_QUESTIONS and can_click):
 		handle_option_pressed(0)

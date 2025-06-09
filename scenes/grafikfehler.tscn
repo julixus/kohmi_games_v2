@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnxd53knhx4vo"]
 
-[ext_resource type="Script" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
+[ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
 [ext_resource type="Texture2D" uid="uid://dotheajo5talp" path="res://res/grafikfehler_bg.png" id="2_db7sa"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="4_kjurm"]
 
