@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnxd53knhx4vo"]
 
-[ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
+[ext_resource type="Script" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
 [ext_resource type="Texture2D" uid="uid://dotheajo5talp" path="res://res/grafikfehler_bg.png" id="2_db7sa"]
-[ext_resource type="Texture2D" uid="uid://b3bq6mmje2ic6" path="res://res/Grafikfehler2.jpg" id="3_db7sa"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="4_kjurm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih0h6"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xvta"]
 
 [node name="Grafikfehler" type="Node2D"]
 script = ExtResource("1_ewubi")
@@ -35,13 +36,13 @@ texture = ExtResource("2_db7sa")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9, 48)
 scale = Vector2(0.921359, 0.921359)
-texture = ExtResource("3_db7sa")
+texture = SubResource("CompressedTexture2D_2xvta")
 
 [node name="CheckButton" type="CheckButton" parent="."]
-offset_left = 94.0
-offset_top = -9.0
-offset_right = 190.0
-offset_bottom = 15.0
+offset_left = -97.0
+offset_top = 197.0
+offset_right = 24.0
+offset_bottom = 221.0
 
 [node name="Label" type="Label" parent="."]
 offset_left = 450.0

@@ -80,6 +80,8 @@ func handle_option_pressed(index):
 		load_answers()
 	else:
 		print("Das waren alle Fragen")
+		wait(5)
+		get_tree().change_scene_to_file("res://scenes/pseudocode.tscn")
 	
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout

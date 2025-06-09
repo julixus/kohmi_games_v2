@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3bq6mmje2ic6"
-path="res://.godot/imported/Grafikfehler2.jpg-914d703c98dc41a8505313a132fdc049.ctex"
+uid="uid://gbwwij4ky8k4"
+path="res://.godot/imported/GrFe_02.png-e67508934e6bc296b57f14eddcd40f10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/Grafikfehler2.jpg"
-dest_files=["res://.godot/imported/Grafikfehler2.jpg-914d703c98dc41a8505313a132fdc049.ctex"]
+source_file="res://res/Grafikfehler_images/GrFe_02.png"
+dest_files=["res://.godot/imported/GrFe_02.png-e67508934e6bc296b57f14eddcd40f10.ctex"]
 
 [params]
 

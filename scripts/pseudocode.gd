@@ -7,13 +7,14 @@ extends Node2D
 @onready var tile_area: Area2D = $Tile_Area
 @onready var icon: Sprite2D = $Icon
 @onready var score_label: Label = $UI/Score_Label
+@onready var command_two: Label = $UI/Command_Label_Two
 
 
 var icon_pos_x = 279
 var icon_pos_y = 157
 var icon_rotation = 0
 var icon_start = Vector2(180.5, 57)
-#const GRID_SIZE = 41.98
+var moving = false
 const GRID_SIZE_X = 42.9
 const GRID_SIZE_Y = 43.2
 const OFFSET = Vector2(20.94,20.94)#Vector2(10,20)
@@ -23,8 +24,22 @@ var time_score = 0
 var time_label = "00:00"
 var goal_pressed = false
 var score = 0
-var code = ["MoveForward();\nturnLeft();\nmoveForward();", "MoveForward();\nmoveForward();\nturnRight();\nturnRight();",
-			"TurnLeft();\nMoveForward();\nMoveForward();\nTurnRight();\nMoveForward();\nMoveForward();\nTurnLeft();\nMoveForward();"]
+var code = ["Start:\nmoveForward();\nturnLeft();\nmoveForward();", #1.1
+			"Start:\nmoveForward();\nmoveForward();\nturnRight();\nturnRight();", #1.2
+			"Start:\nturnLeft();\nmoveForward();\nmoveForward();\nturnRight();\nmoveForward();\nmoveForward();\nturnLeft();\nmoveForward();", #1.3
+			"Start:\nturnLeft();\nturnLeft();\nturnLeft();\nmoveForward();\nmoveForward();\nturnRight();\nmoveForward();\nmoveForward();\nmoveForward();\nturnRight();\nmoveForward();\nmoveForward();\nturnRight();\nmoveForward();", #1.4
+			"Start:\nfor(count:3){\nmoveForward();\n}", #2.1
+			"Start:\nturnLeft();\nfor(count:2){\nmoveForward;\nturnLeft();\n}\nmoveForward();", #2.2
+			"Start:\nfor(count:3){\nmoveForward();\n}\nturnLeft();\nfor(Count:5){\nmoveForward();\n}\nturnLeft();\nmoveForward();", #2.3
+			"Start:\nfor(count:2){\nfor(count:2){\nmoveForward();\nturnRight();\n}\nturnRight();\nmoveForward();\nmoveForward();\nmoveForward();\n}", #2.4
+			"Func doppelMove{\nmoveForward();\nmoveForward();\n}\n\nStart:\nturnLeft();\ndoppelMove();", #3.1
+			"Func turnAround{\nturnLeft();\nturnLeft();\n}\n\nStart:\nmoveForward();\nmoveForward();\nturnLeft();\nturnAround();\nmoveForward();\nmoveForward();\nmoveForward();", #3.2
+			"Func fourTurnOne{\nmoveForward();\nmoveForward();\nmoveForward();\nmoveForward();\nturnLeft();\nmoveForward();\n}\n\nStart:\nfourTurnOne();\nturnLeft();\nfourTurnOne();\nturnLeft();\nwalkForward();", #3.3
+			"Func alpha{\nmoveForward();\nturnLeft();\nmoveForward();\nturnRight();\nmoveForward();\n}\n\nfunc beta{\nmoveForward();\nmoveForward();\nturnLeft();\nmoveForward();\n}\n\nStart:\nalpha();\nbeta();\nbeta();\nalpha()", #3.4
+			"Func trippleWalk{\nfor(count:3){\nwalkForward();\n}\n}\n\nfunc zickZack{\nwalkForward();\nturnLeft();\nwalkForward();\nturnRight();\nwalkForward();\n}\n\nStart:\ntrippleWalk();\nturnRight();\nzickZack();\nturnRight();\ntrippleWalk();\ntrippleWalk();\nfor(count:1){\nzickZack();\n}\nturnRight();\nfor(count:2){\ntrippleWalk\n}\nturnRight();\nfor(Count:2){\nzickZack();", #4.1
+			"func knightRight{\nmoveForward();\nmoveForward();\nturnRight();\nmoveForward();\nturnLeft();\n}\n\nfunc knightLeft{\nmoveForward();\nmoveForward();\nturnLeft();\nmoveForward();\nturnRight();\n}", #4.2
+			"", #4.3
+			""] #4.4
 
 func _ready() -> void:
 	var size : int = icon.scale.x
@@ -41,6 +56,12 @@ func _process(delta: float) -> void:
 	
 	icon.position = Vector2(icon_pos_x, icon_pos_y)
 	icon.rotation_degrees = icon_rotation
+	
+	if score == 12:
+		command_two.text = "\n\n\nStart:\ntrippleWalk();\nturnRight();\nzickZack();\nturnRight();\ntrippleWalk();\ntrippleWalk();\nfor(count:1){\nzickZack();\n}\nturnRight();\nfor(count:2){\ntrippleWalk\n}\nturnRight();\nfor(Count:2){\nzickZack();"
+	elif score == 13:
+		command_two.text = "\n\n\nfunc turnAround{\nfor(count:2){\nturnLeft();\n}\n}\n\nStart:\nturnAround();\nknightLeft();\nturnLeft();\nknightLeft();\nknightRight();\nturnAround();\nfor(count:4)\nknightRight();"
+	else: command_two.text = ""
 	
 	#TODO: kommt noch raus vor release
 	if Input.is_action_just_pressed("Move"):
@@ -65,6 +86,8 @@ func _on_goal_button_pressed() -> void:
 		score = score + 1
 	else:
 		print("score ist maximal")
+		await wait(3)
+		get_tree().change_scene_to_file("res://scenes/grafikfehler.tscn")
 	nextCode(score)
 	moveButton(score)
 
@@ -103,7 +126,7 @@ func nextCode(index: int):
 		print("kein neuer Code vorhanden")
 	
 func moveButton(position: int):
-	var buttonPositions = [Vector2(117, 113), Vector2(263, 83), Vector2(174, 83)]
+	var buttonPositions = [Vector2(117, -7), Vector2(160,-49), Vector2(32, -49), Vector2(160, 123), Vector2(160, -92), Vector2(160,80), Vector2(-54, -49), Vector2(32, 80), Vector2(75, 37), Vector2(246, -49), Vector2(203, 37), Vector2(32, -7), Vector2(-54, 80), Vector2(32, -49), Vector2(0,0)]
 	if (position < len(buttonPositions)):
 		goal_button.position = buttonPositions[position]
 	else:
@@ -147,28 +170,238 @@ func moveIcon(position: int):
 			await wait(delay)
 			moveForward()
 			await wait(delay_end)
+		3:
+			turnLeft()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		4:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		5:
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		6:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		7:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay_end)
+		8:
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		9:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		10:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		11:
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnLeft()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay_end)
+		12:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay_end)
+		13:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay_end)
+		14:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay_end)
+		15:
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay_end)
 	direction = "Up"
 	icon_rotation = 0
 	icon_pos_x = icon_start.x
 	icon_pos_y = icon_start.y
 
+#Wartepause in Sekunden
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
 
+#Bewegt Spieler nach vorne
 func moveForward():
 	if direction == "Down":
-		icon_pos_y = icon_pos_y + 29.75
+		icon_pos_y = icon_pos_y + GRID_SIZE_Y
 		print("1if down")
 	if direction == "Up":
-		icon_pos_y = icon_pos_y - 29.75
+		icon_pos_y = icon_pos_y - GRID_SIZE_Y
 		print("1if up")
 	if direction == "Left":
-		icon_pos_x = icon_pos_x - 29.75
+		icon_pos_x = icon_pos_x - GRID_SIZE_X
 		print("1if left")
 	if direction == "Right":
-		icon_pos_x = icon_pos_x + 29.75
+		icon_pos_x = icon_pos_x + GRID_SIZE_X
 		print("1if right")
 		
+#Dreht Spieler nach links
 func turnLeft():
 	icon_rotation = icon_rotation - 90
 	if direction == "Up":
@@ -184,6 +417,7 @@ func turnLeft():
 		print("2if right")
 		direction = "Up"
 		
+#Dreht Spieler nach rechts
 func turnRight():
 	icon_rotation = icon_rotation + 90
 	if direction == "Up":

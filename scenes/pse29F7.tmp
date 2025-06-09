@@ -81,39 +81,13 @@ text = "time"
 metadata/_edit_use_anchors_ = true
 
 [node name="Command_Label" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.125
-anchor_bottom = 0.125
+layout_mode = 0
 offset_left = -531.0
 offset_top = -172.0
 offset_right = -282.0
 offset_bottom = 95.0
 theme = SubResource("Theme_8ay4w")
 theme_override_colors/font_color = Color(0, 0.694118, 0, 1)
-theme_override_font_sizes/font_size = 11
-text = "Manuelle Sequenz
-
-
-MoveLeft();
-MoveRight();
-MoveFront();"
-metadata/_edit_use_anchors_ = true
-
-[node name="Command_Label_Two" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 3.775
-anchor_top = 0.175
-anchor_right = 3.775
-anchor_bottom = 0.175
-offset_left = -531.0
-offset_top = -172.0
-offset_right = -283.0
-offset_bottom = 95.0
-theme = SubResource("Theme_8ay4w")
-theme_override_colors/font_color = Color(0, 0.694118, 0, 1)
-theme_override_font_sizes/font_size = 11
 text = "Manuelle Sequenz
 
 
