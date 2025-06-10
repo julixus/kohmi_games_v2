@@ -20,6 +20,7 @@ const MAX_QUESTIONS = 10
 
 func _ready() -> void:
 	option_buttons = [option_1, option_2, option_3]
+	score_label.text = str(score)
 	load_textures()
 	shuffle_all()
 	new_question()
