@@ -25,11 +25,6 @@ func _ready() -> void:
 	new_question()
 	load_answers()
 	
-func _process(delta: float) -> void:
-	var green_clr = Color(0.0, 0.776, 0.0)
-	#option_1.add_theme_color_override("font_color", Color.BROWN)
-	#option_2.add_theme_color_override("font_color", Color.BROWN)
-	#option_3.add_theme_color_override("font_color", Color.BROWN)
 	
 func load_textures():
 	style_right.texture = load("res://res/Quiz-richtig.webp")
@@ -64,23 +59,13 @@ func _on_antwort_option_2_pressed() -> void:
 	if (counter < MAX_QUESTIONS and can_click):	
 		handle_option_pressed(1)
 	
-func handle_option_pressed(index):
-	var option = option_buttons[index]
-	
+func handle_option_pressed(index):	
 	if shuffled_all[counter].answers[question_order[index]].is_true:
 		score += 1
-		option.add_theme_stylebox_override("normal", style_right)
-		option.add_theme_stylebox_override("hover", style_right)
-	else:
-		option.add_theme_stylebox_override("normal", style_wrong)
-		option.add_theme_stylebox_override("hover", style_wrong)
+	reveal_options()
 	counter += 1
 	score_label.text = str(score)
-	can_click = false #verhindert spammen von Anworten, ansonsten von zb Frage 3 auf Frage 10 instant
-	await wait(1)
-	can_click = true
-	option.remove_theme_stylebox_override("normal")
-	option.remove_theme_stylebox_override("hover")
+	await wait(1.5)
 	if (counter < MAX_QUESTIONS):
 		new_question()
 		load_answers()
@@ -91,3 +76,21 @@ func handle_option_pressed(index):
 	
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
+
+func reveal_options():
+	var i = 0
+	for option in option_buttons:
+		if shuffled_all[counter].answers[question_order[i]].is_true:
+			option.add_theme_stylebox_override("normal", style_right)
+			option.add_theme_stylebox_override("hover", style_right)
+		else:
+			option.add_theme_stylebox_override("normal", style_wrong)
+			option.add_theme_stylebox_override("hover", style_wrong)
+		i += 1
+	can_click = false #verhindert spammen von Anworten, ansonsten von zb Frage 3 auf Frage 10 instant
+	await wait(1.5)
+	can_click = true
+	for option in option_buttons:
+		option.remove_theme_stylebox_override("normal")
+		option.remove_theme_stylebox_override("hover")
+	
