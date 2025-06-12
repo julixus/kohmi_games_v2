@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="Texture2D" uid="uid://b7q8mqaqqf5ry" path="res://res/pseudocode_bg.png" id="2_07wj8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
-[ext_resource type="Texture2D" uid="uid://dwyb68n6cppap" path="res://icon.svg" id="6_11llr"]
+[ext_resource type="Texture2D" uid="uid://h01yexu8lexf" path="res://res/Unbenannt.jpg" id="4_5o0ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o0ki"]
 size = Vector2(727.5, 475)
@@ -170,9 +170,9 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(181, 57)
-scale = Vector2(0.32, 0.32)
-texture = ExtResource("6_11llr")
+position = Vector2(9.47499, -115.475)
+scale = Vector2(0.0319922, 0.0319922)
+texture = ExtResource("4_5o0ki")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Sprite2D/Tile_Area" to="." method="_on_tile_area_area_entered"]
