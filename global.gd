@@ -143,7 +143,7 @@ var questions = [
 	{
 		"question": "Was macht ein VPN?",
 		"answers": [
-			{"text": "Es verbindet ein Gerät in einem bestehenden Netzwerk mit einem anderen Netzwerk", "is_true": true},
+			{"text": "Es verbindet Geräte in einem bestehenden Netzwerk mit einem anderen Netzwerk", "is_true": true},
 			{"text": "Es dient als Virenscanner", "is_true": false},
 			{"text": "Es verbindet IP Adresse und Domäne (z.B. Adresse 8.8.8.8 mit Google.com)", "is_true": false}
 		]

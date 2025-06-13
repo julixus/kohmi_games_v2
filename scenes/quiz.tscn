@@ -71,6 +71,7 @@ theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
 theme_override_fonts/font = ExtResource("2_xq7j8")
 theme_override_font_sizes/font_size = 22
 text = "Frage"
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Score" type="Label" parent="."]
