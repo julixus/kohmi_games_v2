@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=20 format=3 uid="uid://g3yb1qrf5bnm"]
 
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="Texture2D" uid="uid://b7q8mqaqqf5ry" path="res://res/pseudocode_bg.png" id="2_07wj8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
 [ext_resource type="Texture2D" uid="uid://h01yexu8lexf" path="res://res/Unbenannt.jpg" id="4_5o0ki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o0ki"]
 size = Vector2(727.5, 475)
@@ -38,6 +41,14 @@ bg_color = Color(0, 0.27451, 0, 0)
 [node name="Pseudocode" type="Node2D"]
 position = Vector2(184, 181)
 script = ExtResource("1_n8srr")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -585.0
+offset_top = -343.0
+offset_right = 583.0
+offset_bottom = 336.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5o0ki")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -146,7 +157,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mqcq8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5o0ki")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_npq0p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_07wj8")
-text = "Goal"
+text = "goal"
 metadata/_edit_use_anchors_ = true
 
 [node name="Score_Label" type="Label" parent="UI"]
