@@ -86,7 +86,8 @@ func _on_goal_button_pressed() -> void:
 	if can_click:
 		goal_pressed = true
 		print("pressed")
-		goal_button.add_theme_stylebox_override("normal", sb)
+		goal_button.add_theme_stylebox_override("normal", sb) #funktioniert nicht immer sofot, ka warum
+		print("theme")
 		await moveIcon(index)
 		goal_button.remove_theme_stylebox_override("normal")
 		if (score < len(code)):
@@ -103,16 +104,14 @@ func _on_tile_area_input_event(viewport: Node, event: InputEvent, shape_idx: int
 	if (event is InputEventMouseButton && event.pressed && can_click):
 		print ("incorrect")
 		var mouse_pos = get_global_mouse_position()# + OFFSET #global weil gelegt von 0/0 bis +x/+x statt local mit -x/-x bis +x/+x
-		#var mouse_pos = get_local_mouse_position()
 		print("mouse pos: "+str(mouse_pos))
 		var grid_pos = snap_to_grid(mouse_pos)# - Vector2(167,167) #Alles scheiße Digga wtt
 		grid_pos = grid_pos - Vector2(183,180)
-		#grid_pos = grid_pos * Vector2(1.03, 1.03)
 		print("grid pos: "+ str(grid_pos))
 		draw_rectangle_at(grid_pos)
 		
 		var rect = ColorRect.new()
-		rect.color = Color(0,70,0,0.5)
+		rect.color = Color(0, 70, 0, 0.5)
 		rect.size = goal_button.size
 		rect.position = goal_button.position
 		add_child(rect)

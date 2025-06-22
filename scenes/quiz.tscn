@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=21 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
-[ext_resource type="Script" path="res://scripts/quiz.gd" id="1_xq7j8"]
+[ext_resource type="Script" uid="uid://b3qcemqfvff2x" path="res://scripts/quiz.gd" id="1_xq7j8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="2_xq7j8"]
-[ext_resource type="VideoStream" path="res://res/Videos/Sequenz-01_1.ogv" id="3_pd1ix"]
+[ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="3_t0h63"]
 [ext_resource type="Texture2D" uid="uid://cmyylyrr688e6" path="res://res/Quiz_BG.png" id="4_06ax7"]
+[ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="4_lcje5"]
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
 [ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
@@ -72,9 +73,10 @@ offset_left = -74.0
 offset_top = -180.0
 offset_right = 1846.0
 offset_bottom = 844.0
-stream = ExtResource("3_pd1ix")
+mouse_filter = 2
+stream = ExtResource("3_t0h63")
 autoplay = true
-loop = true
+script = ExtResource("4_lcje5")
 
 [node name="QuizBg2" type="Sprite2D" parent="."]
 position = Vector2(575, 319)
@@ -114,9 +116,9 @@ theme = ExtResource("4_xq7j8")
 theme_override_colors/font_disabled_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0.776471, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_t0h63")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xq7j8")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lcje5")
@@ -130,9 +132,9 @@ theme = ExtResource("4_xq7j8")
 theme_override_colors/font_disabled_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0.776471, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_16nxq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bn6h1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_xcx78")
@@ -146,9 +148,9 @@ theme = ExtResource("4_xq7j8")
 theme_override_colors/font_disabled_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0.776471, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
 theme_override_colors/font_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.776471, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_styles/hover = SubResource("StyleBoxTexture_euwqo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kp58l")
 theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")

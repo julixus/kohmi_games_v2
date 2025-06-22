@@ -87,6 +87,10 @@ func reveal_options():
 		else:
 			option.add_theme_stylebox_override("normal", style_wrong)
 			option.add_theme_stylebox_override("hover", style_wrong)
+			option.add_theme_color_override("font_color", Color(70, 0, 0))
+			option.add_theme_color_override("font_hover_color", Color(70, 0, 0))
+			option.add_theme_color_override("font_focus_color", Color(70, 0, 0))
+			option.add_theme_color_override("font_disabled_color", Color(70, 0, 0))
 		i += 1
 	can_click = false #verhindert spammen von Anworten, ansonsten von zb Frage 3 auf Frage 10 instant
 	await wait(1.5)
@@ -94,4 +98,9 @@ func reveal_options():
 	for option in option_buttons:
 		option.remove_theme_stylebox_override("normal")
 		option.remove_theme_stylebox_override("hover")
+		option.add_theme_color_override("font_color", Color(0, 70, 0))
+		option.add_theme_color_override("font_hover_color", Color(0, 70, 0))
+		option.add_theme_color_override("font_focus_color", Color(0, 70, 0))
+		option.add_theme_color_override("font_disabled_color", Color(0, 70, 0))
+		
 	

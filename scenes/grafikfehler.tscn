@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnxd53knhx4vo"]
+[gd_scene load_steps=9 format=3 uid="uid://dnxd53knhx4vo"]
 
-[ext_resource type="Script" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
-[ext_resource type="VideoStream" path="res://res/Videos/Sequenz-01_1.ogv" id="2_8xxfa"]
+[ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
+[ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_kjurm"]
+[ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="3_dsqeu"]
 [ext_resource type="Texture2D" uid="uid://chxe62lmvqnnp" path="res://res/Grafik_BG.png" id="3_w5lux"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="4_kjurm"]
 
@@ -41,9 +42,11 @@ offset_left = -665.0
 offset_top = -546.0
 offset_right = 1255.0
 offset_bottom = 607.0
-stream = ExtResource("2_8xxfa")
+mouse_filter = 2
+stream = ExtResource("2_kjurm")
 autoplay = true
 loop = true
+script = ExtResource("3_dsqeu")
 
 [node name="GrafikfehlerBg" type="Sprite2D" parent="."]
 visible = false
