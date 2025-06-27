@@ -1,15 +1,17 @@
 extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var check_button: CheckButton = $CheckButton
 @onready var label: Label = $Label
 @onready var countdown_label: Label = $Countdown_label
 @onready var timer: Timer = $Timer
 @onready var hp_label: Label = $hp_label
+@onready var check_button: Button = $CheckButton
+@onready var info_btn: Button = $info_btn
+@onready var help_ui: Control = $help_ui
 
 var punkte : int = 0;
 var can_click = true
 var lives = 3
-var index = 0
+var index = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,10 +27,10 @@ func _process(delta: float) -> void:
 	countdown_label.text = str(roundi(timer.time_left)) + "s"
 	hp_label.text = str(lives) +"/3 HP"
 	
-	if  index == 1:
-		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler2.jpg")
-		check_button.size = Vector2(90, 24)
-		check_button.position = Vector2(94, -9)
+	#if  index == 1:
+		#sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler2.jpg")
+		#check_button.size = Vector2(90, 24)
+		#check_button.position = Vector2(94, -9)
 		
 	if  index == 2:
 		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler3.jpg")
@@ -131,18 +133,19 @@ func _process(delta: float) -> void:
 		check_button.position = Vector2(-97, 197)
 
 
-func _on_check_button_toggled(toggled_on: bool) -> void:
-	if can_click:
-		await show_solution()
-		punkte = punkte + 1
-		index += 1
-		lives = 3
+#func _on_check_button_toggled(toggled_on: bool) -> void:
+	#if can_click:
+		#await show_solution()
+		#punkte = punkte + 1
+		#index += 1
+		#lives = 3
 
 func _on_timer_timeout() -> void:
 	print("Zeit ist rum!")
 	can_click = false
+	Global.grafikfehler_score = punkte
 	await wait(5)
-	#spiel Outro ab
+	get_tree().change_scene_to_file("res://scenes/zwischenseq_2.tscn")
 
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
@@ -167,3 +170,21 @@ func show_solution():
 	add_child(rect)
 	await wait(1)
 	rect.queue_free()
+
+
+func _on_check_button_pressed() -> void:
+	if can_click:
+		await show_solution()
+		punkte = punkte + 1
+		index += 1
+		lives = 3
+		print(index)
+
+func _on_info_btn_pressed() -> void:
+	help_ui.visible = true
+	timer.paused = true	
+
+func _on_ok_button_pressed() -> void:
+	print("ok button toggled")
+	help_ui.visible = false
+	timer.paused = false

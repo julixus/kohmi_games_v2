@@ -9,6 +9,7 @@ extends Node2D
 @onready var score_label: Label = $UI/Score_Label
 @onready var command_two: Label = $UI/Command_Label_Two
 @onready var countdown: Timer = $countdown
+@onready var help_ui: Control = $help_ui
 
 
 var icon_pos_x = 279
@@ -82,14 +83,17 @@ func _on_timer_timeout() -> void:
 
 func _on_goal_button_pressed() -> void:
 	var sb = StyleBoxFlat.new()
+	var sb_empty = StyleBoxEmpty.new()
 	sb.bg_color = Color(0, 70, 0, 0.5)
 	if can_click:
 		goal_pressed = true
 		print("pressed")
 		goal_button.add_theme_stylebox_override("normal", sb) #funktioniert nicht immer sofot, ka warum
+		goal_button.add_theme_stylebox_override("hover", sb)
 		print("theme")
 		await moveIcon(index)
-		goal_button.remove_theme_stylebox_override("normal")
+		goal_button.add_theme_stylebox_override("normal", sb_empty) #funktioniert nicht immer sofot, ka warum
+		goal_button.add_theme_stylebox_override("hover", sb_empty)
 		if (score < len(code)):
 			score = score + 1
 			index += 1
@@ -483,5 +487,16 @@ func turnRight():
 func _on_countdown_timeout() -> void:
 	print("Zeit ist rum")
 	can_click = false
+	Global.pseudocode_score = score
 	await wait(3)
-	get_tree().change_scene_to_file("res://scenes/grafikfehler.tscn")
+	get_tree().change_scene_to_file("res://scenes/zwischenseq_1.tscn")
+
+
+func _on_info_btn_pressed() -> void:
+	help_ui.visible = true
+	countdown.paused = true	
+
+func _on_ok_button_pressed() -> void:
+	print("ok button toggled")
+	help_ui.visible = false
+	countdown.paused = false

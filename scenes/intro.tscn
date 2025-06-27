@@ -1,3 +1,139 @@
-[gd_scene format=3 uid="uid://df3rk6soj24vg"]
+[gd_scene load_steps=8 format=3 uid="uid://df3rk6soj24vg"]
+
+[ext_resource type="Script" uid="uid://ctvnv0576m485" path="res://scripts/intro.gd" id="1_4bx60"]
+[ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="2_i2l1n"]
+[ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_wfs7u"]
+[ext_resource type="Texture2D" uid="uid://bdwfy02ea8fyb" path="res://res/pseudocode_kohmi.png" id="4_i2l1n"]
+[ext_resource type="VideoStream" uid="uid://bjj83ttei2ubq" path="res://res/Videos/phone-ringing-v2(1).ogv" id="5_wfs7u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es01l"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0naf5"]
+size = Vector2(1156, 650)
 
 [node name="Intro" type="Node2D"]
+script = ExtResource("1_4bx60")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -597.0
+offset_top = -339.0
+offset_right = 604.0
+offset_bottom = 352.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_es01l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_0naf5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -568.0
+offset_top = 159.0
+offset_right = 554.0
+offset_bottom = 312.0
+theme_override_constants/separation = 5
+
+[node name="Sprecher" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.737255, 0, 1)
+theme_override_fonts/font = ExtResource("2_i2l1n")
+theme_override_font_sizes/font_size = 21
+text = "Kohmi"
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.737255, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_wfs7u")
+theme_override_font_sizes/normal_font_size = 21
+text = "sdsd"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -194.0
+offset_top = -28.0
+offset_right = 195.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_constants/separation = 186
+
+[node name="ja_btn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Ja"
+
+[node name="nein_btn" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Nein (Skip)"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = -194.0
+offset_top = -28.0
+offset_right = 195.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_constants/separation = 186
+
+[node name="nat_btn" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Natürlich!"
+
+[node name="ajf_btn" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Auf Jeden Fall!
+"
+
+[node name="PseudocodeKohmi" type="Sprite2D" parent="."]
+position = Vector2(-475, 84)
+scale = Vector2(0.730337, 0.730337)
+texture = ExtResource("4_i2l1n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -598.0
+offset_top = -352.0
+offset_right = 625.0
+offset_bottom = 366.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Container" type="CenterContainer" parent="."]
+offset_left = -240.0
+offset_top = -133.0
+offset_right = 240.0
+offset_bottom = 137.0
+mouse_filter = 2
+
+[node name="telefon_rect" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="telefon_video" type="VideoStreamPlayer" parent="Container"]
+visible = false
+layout_mode = 2
+stream = ExtResource("5_wfs7u")
+volume_db = -8.65
+autoplay = true
+loop = true
+metadata/_edit_lock_ = true
+
+[node name="telefon_btn" type="Button" parent="Container"]
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 2
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="pressed" from="HBoxContainer/ja_btn" to="." method="_on_ja_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/nein_btn" to="." method="_on_nein_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer2/nat_btn" to="." method="_on_nat_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ajf_btn" to="." method="_on_ajf_btn_pressed"]
+[connection signal="pressed" from="Container/telefon_btn" to="." method="_on_telefon_btn_pressed"]

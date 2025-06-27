@@ -14,8 +14,8 @@ const MAX_QUESTIONS = 10
 @onready var option_2: Button = $"VBoxContainer/Antwort Option2"
 @onready var frage: Label = $Frage
 @onready var score_label: Label = $Score
-
-
+@onready var help_ui: Control = $help_ui
+@onready var info_btn: Button = $info_btn
 
 
 func _ready() -> void:
@@ -67,13 +67,15 @@ func handle_option_pressed(index):
 	counter += 1
 	score_label.text = str(score)
 	await wait(1.5)
+	print(counter)
 	if (counter < MAX_QUESTIONS):
 		new_question()
 		load_answers()
 	else:
 		print("Das waren alle Fragen")
+		Global.quiz_score = score
 		wait(5)
-		get_tree().change_scene_to_file("res://scenes/pseudocode.tscn")
+		get_tree().change_scene_to_file("res://scenes/outro.tscn")
 	
 func wait(seconds: float):
 	await get_tree().create_timer(seconds).timeout
@@ -102,5 +104,11 @@ func reveal_options():
 		option.add_theme_color_override("font_hover_color", Color(0, 70, 0))
 		option.add_theme_color_override("font_focus_color", Color(0, 70, 0))
 		option.add_theme_color_override("font_disabled_color", Color(0, 70, 0))
-		
+
+func _on_info_btn_pressed() -> void:
+	help_ui.visible = true
+
+func _on_ok_button_pressed() -> void:
+	print("ok button toggled")
+	help_ui.visible = false
 	

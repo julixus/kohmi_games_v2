@@ -1,6 +1,10 @@
 extends Node
 
 var shuffled_all
+var pseudocode_score = 0
+var grafikfehler_score = 0
+var quiz_score = 0
+var player_name = "unchanged name"
 
 
 var questions = [
@@ -133,11 +137,11 @@ var questions = [
 		]
 	},
 	{
-		"question": "Wie verändert sich bei einer Kamera die Tiefenschärfe, wenn das Objektiv länger wird?",
+		"question": "Womit stellt man die Tiefenschärfe bei einer Kamera ein?",
 		"answers": [
-			{"text": "Objekte im Bild werden gleich scharft (TF geht hoch)", "is_true": true},
-			{"text": "Objekte im Bild werden verschieden scharft (TF geht runter)", "is_true": false},
-			{"text": "TF ist davon nicht abhängig", "is_true": false}
+			{"text": "Mit der Blende", "is_true": true},
+			{"text": "Mit der Verschlusszeit", "is_true": false},
+			{"text": "Mit dem ISO-Wert", "is_true": false}
 		]
 	},
 	{

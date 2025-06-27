@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnxd53knhx4vo"]
+[gd_scene load_steps=25 format=3 uid="uid://dnxd53knhx4vo"]
 
 [ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_kjurm"]
 [ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="3_dsqeu"]
 [ext_resource type="Texture2D" uid="uid://chxe62lmvqnnp" path="res://res/Grafik_BG.png" id="3_w5lux"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="4_kjurm"]
+[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="6_p8d4p"]
+[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="7_qhuo5"]
+[ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="8_0tk73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih0h6"]
 bg_color = Color(0, 0, 0, 1)
@@ -13,6 +16,36 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db7sa"]
 size = Vector2(870, 500)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llcob"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn12n"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cryd0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrvdo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xccx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knyhg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kat4s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vaa4y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcbxw"]
+texture = ExtResource("6_p8d4p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vegx3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5xhp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6prrw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b57hi"]
+texture = ExtResource("7_qhuo5")
 
 [node name="Grafikfehler" type="Node2D"]
 script = ExtResource("1_ewubi")
@@ -45,7 +78,6 @@ offset_bottom = 607.0
 mouse_filter = 2
 stream = ExtResource("2_kjurm")
 autoplay = true
-loop = true
 script = ExtResource("3_dsqeu")
 
 [node name="GrafikfehlerBg" type="Sprite2D" parent="."]
@@ -64,7 +96,7 @@ position = Vector2(9, 48)
 scale = Vector2(0.921359, 0.921359)
 texture = SubResource("CompressedTexture2D_2xvta")
 
-[node name="CheckButton" type="CheckButton" parent="."]
+[node name="CheckButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 offset_left = -97.0
@@ -115,6 +147,89 @@ wait_time = 180.0
 one_shot = true
 autostart = true
 
+[node name="help_ui" type="Control" parent="."]
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="transperency_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = -586.0
+offset_top = -342.0
+offset_right = 582.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_llcob")
+
+[node name="text_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = -377.0
+offset_top = -204.0
+offset_right = 433.0
+offset_bottom = 187.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qn12n")
+
+[node name="ok_button" type="Button" parent="help_ui"]
+layout_mode = 0
+offset_left = -71.0
+offset_top = 124.0
+offset_right = 86.0
+offset_bottom = 162.0
+theme_override_colors/icon_pressed_color = Color(0, 0.705882, 0, 1)
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cryd0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rrvdo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2xccx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_knyhg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kat4s")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vaa4y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bcbxw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vegx3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t5xhp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_6prrw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_b57hi")
+text = "OK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
+layout_mode = 0
+offset_left = -353.0
+offset_top = -191.0
+offset_right = 413.0
+offset_bottom = 165.0
+mouse_filter = 2
+theme_override_constants/separation = 20
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_fonts/font = ExtResource("8_0tk73")
+theme_override_font_sizes/font_size = 26
+text = "Wie geht dieses Spiel?"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_kjurm")
+theme_override_font_sizes/font_size = 17
+text = "Du siehst eine Reihe von verschiedenen Wörtern in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden.
+
+Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  Während dieser Text zu sehen ist, wird der Countdown angehalten."
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="info_btn" type="Button" parent="."]
+offset_left = -571.0
+offset_top = -320.0
+offset_right = -540.0
+offset_bottom = -289.0
+text = "?"
+
+[connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="info_btn" to="." method="_on_info_btn_pressed"]

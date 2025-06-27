@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=38 format=3 uid="uid://g3yb1qrf5bnm"]
 
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_11llr"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="3_npq0p"]
 [ext_resource type="Texture2D" uid="uid://bugr2w7n6efxj" path="res://res/Pseudo_BG.png" id="3_w43qk"]
 [ext_resource type="Texture2D" uid="uid://h01yexu8lexf" path="res://res/Unbenannt.jpg" id="4_5o0ki"]
+[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="7_2dgal"]
+[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="7_gvvvs"]
+[ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="8_2dgal"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
 bg_color = Color(0, 0, 0, 1)
@@ -37,8 +40,38 @@ size = Vector2(727.5, 475)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npq0p"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07wj8"]
-bg_color = Color(0, 0.27451, 0, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11llr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imxnl"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n08hw"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wl8w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5ty7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_luchd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17uy0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tg8ip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syy4k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5xum"]
+texture = ExtResource("7_2dgal")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0e4s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqeqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdt5e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyrb0"]
+texture = ExtResource("7_gvvvs")
 
 [node name="Pseudocode" type="Node2D"]
 position = Vector2(184, 181)
@@ -169,7 +202,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_11llr")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mqcq8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5o0ki")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_npq0p")
-theme_override_styles/normal = SubResource("StyleBoxFlat_07wj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_11llr")
 metadata/_edit_use_anchors_ = true
 
 [node name="Score_Label" type="Label" parent="UI"]
@@ -183,6 +216,14 @@ theme_override_fonts/font = ExtResource("3_11llr")
 theme_override_font_sizes/font_size = 18
 text = "score"
 metadata/_edit_use_anchors_ = true
+
+[node name="info_btn" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = -383.0
+offset_top = -306.0
+offset_right = -352.0
+offset_bottom = -278.0
+text = "?"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = -181.0
@@ -202,8 +243,86 @@ wait_time = 180.0
 one_shot = true
 autostart = true
 
+[node name="help_ui" type="Control" parent="."]
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="transperency_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = -586.0
+offset_top = -342.0
+offset_right = 582.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_imxnl")
+
+[node name="text_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = -377.0
+offset_top = -204.0
+offset_right = 433.0
+offset_bottom = 187.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n08hw")
+
+[node name="ok_button" type="Button" parent="help_ui"]
+layout_mode = 0
+offset_left = -71.0
+offset_top = 124.0
+offset_right = 86.0
+offset_bottom = 162.0
+theme_override_colors/icon_pressed_color = Color(0, 0.705882, 0, 1)
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4wl8w")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k5ty7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_luchd")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_17uy0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tg8ip")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_syy4k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s5xum")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_v0e4s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nqeqb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fdt5e")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iyrb0")
+text = "OK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
+layout_mode = 0
+offset_left = -353.0
+offset_top = -191.0
+offset_right = 413.0
+offset_bottom = 165.0
+mouse_filter = 2
+theme_override_constants/separation = 20
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_fonts/font = ExtResource("8_2dgal")
+theme_override_font_sizes/font_size = 26
+text = "Wie geht dieses Spiel?"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_11llr")
+theme_override_font_sizes/font_size = 17
+text = "Links siehst du mehrere Zeilen Code. Dieser wird normerweiße nach der Reihe von oben nach unten ausgeführt.
+Rechts siehst du ein Feld, in der Mitte sieht du ein Dreieck, das ist Kohmi. Kohmi schaut in die Richtung, wo das Dreieck hinzeigt.
+
+Klicke das Feld an, in dem Kohmi sein wird, nachdem der ganze Code rechts ausgeführt wurde.
+
+Rechts oben siehst du deinen Score und die Zeit, die du noch übrig hast. Während dieser Text zu sehen ist, wird der Countdown angehalten."
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PseudoBg/Tile_Area" to="." method="_on_tile_area_area_entered"]
 [connection signal="input_event" from="PseudoBg/Tile_Area" to="." method="_on_tile_area_input_event"]
 [connection signal="pressed" from="UI/Goal_Button" to="." method="_on_goal_button_pressed"]
+[connection signal="pressed" from="UI/info_btn" to="." method="_on_info_btn_pressed"]
 [connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]
+[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]

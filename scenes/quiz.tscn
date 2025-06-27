@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=35 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
 [ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
+[ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="11_euwqo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq7j8"]
 bg_color = Color(0, 0, 0, 1)
@@ -48,6 +49,36 @@ texture = ExtResource("4_m81w7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwwmd"]
 content_margin_left = 20.0
+texture = ExtResource("5_xq7j8")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwwmd"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16nxq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcx78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp58l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qkfh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5da4r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d56me"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsttk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24vnv"]
+texture = ExtResource("4_m81w7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fpy57"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fiaka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l17v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahqvi"]
 texture = ExtResource("5_xq7j8")
 
 [node name="Quiz" type="Node2D"]
@@ -157,6 +188,88 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
 alignment = 0
 script = null
 
+[node name="help_ui" type="Control" parent="."]
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="transperency_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -8.0
+offset_right = 1163.0
+offset_bottom = 668.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwwmd")
+
+[node name="text_pnl" type="Panel" parent="help_ui"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 130.0
+offset_right = 1014.0
+offset_bottom = 521.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_16nxq")
+
+[node name="ok_button" type="Button" parent="help_ui"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 458.0
+offset_right = 667.0
+offset_bottom = 496.0
+theme_override_colors/icon_pressed_color = Color(0, 0.705882, 0, 1)
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xcx78")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_kp58l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4qkfh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5da4r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_d56me")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wsttk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_24vnv")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fpy57")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fiaka")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4l17v")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ahqvi")
+text = "OK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 143.0
+offset_right = 994.0
+offset_bottom = 499.0
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
+theme_override_fonts/font = ExtResource("11_euwqo")
+theme_override_font_sizes/font_size = 26
+text = "Wie geht dieses Spiel?"
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xq7j8")
+theme_override_font_sizes/font_size = 17
+text = "Oben steht die Frage, unten stehen drei Antwortmöglichkeiten. Es ist immer nur eine richtig.
+Wähle die richte Antwort aus.
+
+Es gibt insgesamt 10 Fragen, links siehst du, bei welcher Frage du bist. Rechts siehst du deinen Score"
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="info_btn" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 20.0
+offset_right = 57.0
+offset_bottom = 51.0
+text = "?"
+
 [connection signal="pressed" from="VBoxContainer/Antwort Option" to="." method="_on_antwort_option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Antwort Option3" to="." method="_on_antwort_option_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/Antwort Option2" to="." method="_on_antwort_option_2_pressed"]
+[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="info_btn" to="." method="_on_info_btn_pressed"]
