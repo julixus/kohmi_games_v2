@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=47 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
 [ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
@@ -10,7 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="4_m81w7"]
 [ext_resource type="Theme" uid="uid://nynkib4unodb" path="res://res/style_btn_normal.tres" id="4_xq7j8"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="5_xq7j8"]
+[ext_resource type="Texture2D" uid="uid://b237axg00sxag" path="res://res/Export.png" id="11_4qkfh"]
+[ext_resource type="Texture2D" uid="uid://bh8a51xubs4o" path="res://res/Infobutton.png" id="11_5da4r"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="11_euwqo"]
+[ext_resource type="Texture2D" uid="uid://cf0d8fo5vefmi" path="res://res/OK_-_Hover.png" id="12_5da4r"]
+[ext_resource type="Texture2D" uid="uid://bjrlbvtch7go2" path="res://res/OK_-_Umschalten.png" id="13_d56me"]
+[ext_resource type="Texture2D" uid="uid://dayxudbyhl5ng" path="res://res/OK-Standard.png" id="14_wsttk"]
+[ext_resource type="Texture2D" uid="uid://b0ja2l6cowd4j" path="res://res/Wie_geht_dieses_Spiel.png" id="15_24vnv"]
+[ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="18_d56me"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq7j8"]
 bg_color = Color(0, 0, 0, 1)
@@ -51,35 +58,56 @@ texture = ExtResource("4_m81w7")
 content_margin_left = 20.0
 texture = ExtResource("5_xq7j8")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwwmd"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5da4r"]
+texture = ExtResource("11_5da4r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wsttk"]
+texture = ExtResource("11_5da4r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d56me"]
+texture = ExtResource("11_5da4r")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpy57"]
 bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16nxq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsttk"]
 bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcx78"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp58l"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qkfh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5da4r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d56me"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsttk"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24vnv"]
-texture = ExtResource("4_m81w7")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fpy57"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fiaka"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4l17v"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ahqvi"]
-texture = ExtResource("5_xq7j8")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahqvi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8d1ti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyefh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xoaf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p88x8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xojrb"]
+texture = ExtResource("12_5da4r")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3up7n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_en5co"]
+texture = ExtResource("13_d56me")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvuuc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m0i3k"]
+texture = ExtResource("14_wsttk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24vnv"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("11_4qkfh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsttk"]
+shader = ExtResource("18_d56me")
+shader_parameter/u_time = 0.0
 
 [node name="Quiz" type="Node2D"]
 script = ExtResource("1_xq7j8")
@@ -188,87 +216,108 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_vwwmd")
 alignment = 0
 script = null
 
+[node name="info_btn" type="Button" parent="."]
+offset_left = 26.0
+offset_top = 20.0
+offset_right = 57.0
+offset_bottom = 51.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_5da4r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wsttk")
+theme_override_styles/normal = SubResource("StyleBoxTexture_d56me")
+
 [node name="help_ui" type="Control" parent="."]
-z_index = 2
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 580.88
+offset_top = 318.75
+offset_right = 620.88
+offset_bottom = 358.75
 
 [node name="transperency_pnl" type="Panel" parent="help_ui"]
 layout_mode = 0
-offset_left = -5.0
-offset_top = -8.0
-offset_right = 1163.0
-offset_bottom = 668.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_vwwmd")
+offset_left = -586.0
+offset_top = -342.0
+offset_right = 582.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fpy57")
 
 [node name="text_pnl" type="Panel" parent="help_ui"]
 layout_mode = 0
-offset_left = 204.0
-offset_top = 130.0
-offset_right = 1014.0
-offset_bottom = 521.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_16nxq")
+offset_left = -377.0
+offset_top = -204.0
+offset_right = 433.0
+offset_bottom = 187.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsttk")
 
 [node name="ok_button" type="Button" parent="help_ui"]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 458.0
-offset_right = 667.0
-offset_bottom = 496.0
+offset_left = -71.0
+offset_top = 124.0
+offset_right = 86.0
+offset_bottom = 162.0
 theme_override_colors/icon_pressed_color = Color(0, 0.705882, 0, 1)
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xcx78")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_kp58l")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_4qkfh")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5da4r")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_d56me")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wsttk")
-theme_override_styles/hover = SubResource("StyleBoxTexture_24vnv")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fpy57")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_fiaka")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_4l17v")
-theme_override_styles/normal = SubResource("StyleBoxTexture_ahqvi")
-text = "OK"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4l17v")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ahqvi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8d1ti")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nyefh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_xoaf3")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_p88x8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xojrb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3up7n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_en5co")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qvuuc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_m0i3k")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
 layout_mode = 0
-offset_left = 228.0
-offset_top = 143.0
-offset_right = 994.0
-offset_bottom = 499.0
+offset_left = -353.0
+offset_top = -191.0
+offset_right = 413.0
+offset_bottom = 165.0
 mouse_filter = 2
 theme_override_constants/separation = 20
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="help_ui/VBoxContainer"]
+position = Vector2(149.12, 20.25)
+scale = Vector2(0.352679, 0.352679)
+texture = ExtResource("15_24vnv")
 
 [node name="Label" type="Label" parent="help_ui/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
 theme_override_fonts/font = ExtResource("11_euwqo")
 theme_override_font_sizes/font_size = 26
-text = "Wie geht dieses Spiel?"
 metadata/_edit_lock_ = true
 
 [node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xq7j8")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_24vnv")
 text = "Oben steht die Frage, unten stehen drei Antwortmöglichkeiten. Es ist immer nur eine richtig.
 Wähle die richte Antwort aus.
 
-Es gibt insgesamt 10 Fragen, links siehst du, bei welcher Frage du bist. Rechts siehst du deinen Score"
+Es gibt insgesamt 10 Fragen, links siehst du, bei welcher Frage du bist. Rechts siehst du deinen Score.
+Du kannst diesen Text jederzeit mit dem Infobutton oben links aufrufen."
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
-[node name="info_btn" type="Button" parent="."]
-offset_left = 26.0
-offset_top = 20.0
-offset_right = 57.0
-offset_bottom = 51.0
-text = "?"
+[node name="shader_transition" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_wsttk")
+offset_left = 1.0
+offset_top = -7.0
+offset_right = 1181.0
+offset_bottom = 674.0
+mouse_filter = 2
 
 [connection signal="pressed" from="VBoxContainer/Antwort Option" to="." method="_on_antwort_option_pressed"]
 [connection signal="pressed" from="VBoxContainer/Antwort Option3" to="." method="_on_antwort_option_3_pressed"]
 [connection signal="pressed" from="VBoxContainer/Antwort Option2" to="." method="_on_antwort_option_2_pressed"]
-[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="info_btn" to="." method="_on_info_btn_pressed"]
+[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]

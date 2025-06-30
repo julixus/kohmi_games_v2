@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgy07skbss4i3"
-path="res://.godot/imported/Kohmi_games.apple-touch-icon.png-49a1d628e23d20189f3a44170f8e3f13.ctex"
+uid="uid://bh8a51xubs4o"
+path="res://.godot/imported/Infobutton.png-4058db4855eb9d87cfcd88184c36ed74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Kohmi_games.apple-touch-icon.png"
-dest_files=["res://.godot/imported/Kohmi_games.apple-touch-icon.png-49a1d628e23d20189f3a44170f8e3f13.ctex"]
+source_file="res://res/Infobutton.png"
+dest_files=["res://.godot/imported/Infobutton.png-4058db4855eb9d87cfcd88184c36ed74.ctex"]
 
 [params]
 

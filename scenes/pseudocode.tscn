@@ -1,15 +1,19 @@
-[gd_scene load_steps=40 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=48 format=3 uid="uid://g3yb1qrf5bnm"]
 
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_11llr"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_11llr"]
 [ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="3_npq0p"]
 [ext_resource type="Texture2D" uid="uid://bugr2w7n6efxj" path="res://res/Pseudo_BG.png" id="3_w43qk"]
-[ext_resource type="Texture2D" uid="uid://h01yexu8lexf" path="res://res/Unbenannt.jpg" id="4_5o0ki"]
-[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="7_2dgal"]
-[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="7_gvvvs"]
+[ext_resource type="Texture2D" uid="uid://bh8a51xubs4o" path="res://res/Infobutton.png" id="6_edkps"]
+[ext_resource type="Texture2D" uid="uid://b237axg00sxag" path="res://res/Export.png" id="7_1jhna"]
+[ext_resource type="Texture2D" uid="uid://b4nugq0krcfjl" path="res://res/dreieck-v2.png" id="7_edkps"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="8_2dgal"]
+[ext_resource type="Texture2D" uid="uid://cf0d8fo5vefmi" path="res://res/OK_-_Hover.png" id="8_edkps"]
+[ext_resource type="Texture2D" uid="uid://bjrlbvtch7go2" path="res://res/OK_-_Umschalten.png" id="9_mqcq8"]
+[ext_resource type="Texture2D" uid="uid://dayxudbyhl5ng" path="res://res/OK-Standard.png" id="10_4wl8w"]
 [ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="10_imxnl"]
+[ext_resource type="Texture2D" uid="uid://b0ja2l6cowd4j" path="res://res/Wie_geht_dieses_Spiel.png" id="11_k5ty7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
 bg_color = Color(0, 0, 0, 1)
@@ -44,10 +48,19 @@ size = Vector2(727.5, 475)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11llr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqcq8"]
+texture = ExtResource("6_edkps")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wl8w"]
+texture = ExtResource("6_edkps")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5ty7"]
+texture = ExtResource("6_edkps")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imxnl"]
 bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n08hw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jhna"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wl8w"]
@@ -63,16 +76,24 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syy4k"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5xum"]
-texture = ExtResource("7_2dgal")
+texture = ExtResource("8_edkps")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0e4s"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqeqb"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_17uy0"]
+texture = ExtResource("9_mqcq8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdt5e"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyrb0"]
-texture = ExtResource("7_gvvvs")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tg8ip"]
+texture = ExtResource("10_4wl8w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_edkps"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("7_1jhna")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n08hw"]
 shader = ExtResource("10_imxnl")
@@ -91,6 +112,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5o0ki")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 150.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -228,7 +250,9 @@ offset_left = -383.0
 offset_top = -306.0
 offset_right = -352.0
 offset_bottom = -278.0
-text = "?"
+theme_override_styles/hover = SubResource("StyleBoxTexture_mqcq8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4wl8w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k5ty7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = -181.0
@@ -241,7 +265,7 @@ metadata/_edit_lock_ = true
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(9.47499, -115.475)
 scale = Vector2(0.0319922, 0.0319922)
-texture = ExtResource("4_5o0ki")
+texture = ExtResource("7_edkps")
 
 [node name="countdown" type="Timer" parent="."]
 wait_time = 5.0
@@ -268,7 +292,7 @@ offset_left = -377.0
 offset_top = -204.0
 offset_right = 433.0
 offset_bottom = 187.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_n08hw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1jhna")
 
 [node name="ok_button" type="Button" parent="help_ui"]
 layout_mode = 0
@@ -286,10 +310,9 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tg8ip")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_syy4k")
 theme_override_styles/hover = SubResource("StyleBoxTexture_s5xum")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_v0e4s")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_nqeqb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_17uy0")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fdt5e")
-theme_override_styles/normal = SubResource("StyleBoxTexture_iyrb0")
-text = "OK"
+theme_override_styles/normal = SubResource("StyleBoxTexture_tg8ip")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
 layout_mode = 0
@@ -301,24 +324,30 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="help_ui/VBoxContainer"]
+position = Vector2(155, 24)
+scale = Vector2(0.352679, 0.352679)
+texture = ExtResource("11_k5ty7")
+
 [node name="Label" type="Label" parent="help_ui/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
 theme_override_fonts/font = ExtResource("8_2dgal")
 theme_override_font_sizes/font_size = 26
-text = "Wie geht dieses Spiel?"
 metadata/_edit_lock_ = true
 
 [node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_11llr")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_edkps")
 text = "Links siehst du mehrere Zeilen Code. Dieser wird normerweiße nach der Reihe von oben nach unten ausgeführt.
 Rechts siehst du ein Feld, in der Mitte sieht du ein Dreieck, das ist Kohmi. Kohmi schaut in die Richtung, wo das Dreieck hinzeigt.
 
-Klicke das Feld an, in dem Kohmi sein wird, nachdem der ganze Code rechts ausgeführt wurde.
+Klicke das Feld an, in dem Kohmi sein wird, nachdem der ganze Code links ausgeführt wurde.
 
-Rechts oben siehst du deinen Score und die Zeit, die du noch übrig hast. Während dieser Text zu sehen ist, wird der Countdown angehalten."
+Rechts oben siehst du deinen Score und die Zeit, die du noch übrig hast. Während dieser Text zu sehen ist, wird der Countdown angehalten.
+Du kannst diesen Text jederzeit mit dem Infobutton oben links aufrufen."
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 

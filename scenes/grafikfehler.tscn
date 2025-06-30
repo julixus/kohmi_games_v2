@@ -1,13 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://dnxd53knhx4vo"]
+[gd_scene load_steps=35 format=3 uid="uid://dnxd53knhx4vo"]
 
 [ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_kjurm"]
 [ext_resource type="Script" uid="uid://bsx7w5gh76s5b" path="res://scripts/video_stream_player.gd" id="3_dsqeu"]
 [ext_resource type="Texture2D" uid="uid://chxe62lmvqnnp" path="res://res/Grafik_BG.png" id="3_w5lux"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="4_kjurm"]
-[ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="6_p8d4p"]
-[ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="7_qhuo5"]
+[ext_resource type="Texture2D" uid="uid://b237axg00sxag" path="res://res/Export.png" id="6_llcob"]
+[ext_resource type="Texture2D" uid="uid://bh8a51xubs4o" path="res://res/Infobutton.png" id="6_qn12n"]
+[ext_resource type="Texture2D" uid="uid://cf0d8fo5vefmi" path="res://res/OK_-_Hover.png" id="7_qn12n"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="8_0tk73"]
+[ext_resource type="Texture2D" uid="uid://bjrlbvtch7go2" path="res://res/OK_-_Umschalten.png" id="8_cryd0"]
+[ext_resource type="Texture2D" uid="uid://dayxudbyhl5ng" path="res://res/OK-Standard.png" id="9_rrvdo"]
+[ext_resource type="Texture2D" uid="uid://b0ja2l6cowd4j" path="res://res/Wie_geht_dieses_Spiel.png" id="10_2xccx"]
+[ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="13_cryd0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih0h6"]
 bg_color = Color(0, 0, 0, 1)
@@ -17,26 +22,24 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db7sa"]
 size = Vector2(870, 500)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llcob"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cryd0"]
+texture = ExtResource("6_qn12n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrvdo"]
+texture = ExtResource("6_qn12n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xccx"]
+texture = ExtResource("6_qn12n")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knyhg"]
 bg_color = Color(0.180005, 0.180005, 0.180005, 0.521569)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn12n"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cryd0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrvdo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xccx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_knyhg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kat4s"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kat4s"]
+texture = ExtResource("6_llcob")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vaa4y"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcbxw"]
-texture = ExtResource("6_p8d4p")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcbxw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vegx3"]
 
@@ -44,8 +47,31 @@ texture = ExtResource("6_p8d4p")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6prrw"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b57hi"]
-texture = ExtResource("7_qhuo5")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b57hi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0qja"]
+texture = ExtResource("7_qn12n")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7i0ty"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ps7bk"]
+texture = ExtResource("8_cryd0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_46nf2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ta5ga"]
+texture = ExtResource("9_rrvdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llcob"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+texture = ExtResource("6_llcob")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrvdo"]
+shader = ExtResource("13_cryd0")
+shader_parameter/u_time = 0.0
 
 [node name="Grafikfehler" type="Node2D"]
 script = ExtResource("1_ewubi")
@@ -147,8 +173,18 @@ wait_time = 150.0
 one_shot = true
 autostart = true
 
+[node name="info_btn" type="Button" parent="."]
+offset_left = -571.0
+offset_top = -320.0
+offset_right = -540.0
+offset_bottom = -289.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_cryd0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rrvdo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2xccx")
+text = "?"
+
 [node name="help_ui" type="Control" parent="."]
-z_index = 2
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -160,7 +196,7 @@ offset_left = -586.0
 offset_top = -342.0
 offset_right = 582.0
 offset_bottom = 334.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_llcob")
+theme_override_styles/panel = SubResource("StyleBoxFlat_knyhg")
 
 [node name="text_pnl" type="Panel" parent="help_ui"]
 layout_mode = 0
@@ -168,7 +204,7 @@ offset_left = -377.0
 offset_top = -204.0
 offset_right = 433.0
 offset_bottom = 187.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qn12n")
+theme_override_styles/panel = SubResource("StyleBoxTexture_kat4s")
 
 [node name="ok_button" type="Button" parent="help_ui"]
 layout_mode = 0
@@ -178,18 +214,17 @@ offset_right = 86.0
 offset_bottom = 162.0
 theme_override_colors/icon_pressed_color = Color(0, 0.705882, 0, 1)
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_cryd0")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rrvdo")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2xccx")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_knyhg")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kat4s")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vaa4y")
-theme_override_styles/hover = SubResource("StyleBoxTexture_bcbxw")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vegx3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_t5xhp")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_6prrw")
-theme_override_styles/normal = SubResource("StyleBoxTexture_b57hi")
-text = "OK"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vaa4y")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_bcbxw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vegx3")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_t5xhp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6prrw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_b57hi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w0qja")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_7i0ty")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ps7bk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_46nf2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ta5ga")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="help_ui"]
 layout_mode = 0
@@ -201,34 +236,44 @@ mouse_filter = 2
 theme_override_constants/separation = 20
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D" type="Sprite2D" parent="help_ui/VBoxContainer"]
+position = Vector2(152, 18)
+scale = Vector2(0.352679, 0.352679)
+texture = ExtResource("10_2xccx")
+
 [node name="Label" type="Label" parent="help_ui/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.705882, 0, 1)
 theme_override_fonts/font = ExtResource("8_0tk73")
 theme_override_font_sizes/font_size = 26
-text = "Wie geht dieses Spiel?"
 metadata/_edit_lock_ = true
 
 [node name="Label2" type="Label" parent="help_ui/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_kjurm")
 theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_llcob")
 text = "Du siehst eine Reihe von verschiedenen Wörtern in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden.
 
-Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  Während dieser Text zu sehen ist, wird der Countdown angehalten."
+Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  Während dieser Text zu sehen ist, wird der Countdown angehalten.
+Du kannst diesen Text jederzeit mit dem Infobutton oben links aufrufen."
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
-[node name="info_btn" type="Button" parent="."]
-offset_left = -571.0
-offset_top = -320.0
-offset_right = -540.0
-offset_bottom = -289.0
-text = "?"
+[node name="shader_transition" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_rrvdo")
+offset_left = -591.0
+offset_top = -344.0
+offset_right = 589.0
+offset_bottom = 337.0
+mouse_filter = 2
 
 [connection signal="pressed" from="CheckButton" to="." method="_on_check_button_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="info_btn" to="." method="_on_info_btn_pressed"]
+[connection signal="pressed" from="help_ui/ok_button" to="." method="_on_ok_button_pressed"]

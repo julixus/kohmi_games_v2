@@ -31,9 +31,9 @@ func _physics_process(delta: float) -> void:
 	label.visible_characters += SPEED
 	
 	if !vsp.is_playing() and waving_done:
-				vsp.stream = load("res://res/Animations/Cycles-Kohmi-idle.ogv")
-				vsp.loop = true
-				vsp.play()
+		vsp.stream = load("res://res/Animations/Cycles-Kohmi-idle.ogv")
+		vsp.loop = true
+		vsp.play()
 
 func _ready() -> void:
 	label.visible_characters = 0
@@ -51,6 +51,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			pseudocode_kohmi.visible = false
 			vsp.play()
 			waving_done = true
+		if line_counter == 5:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-approval.ogv")
+			vsp.loop = false
+			vsp.play()
+			
 		if line_counter == len(lines)-1:
 			can_click = false
 			await fade_to_black()

@@ -7,7 +7,7 @@ shader_type canvas_item;
 #define TAU 6.28318
 
 // Uncomment the following line to get a flare in the center (Disney-style)
-//#define FLARE 1
+#define FLARE 1
 
 // The way this shader works is by looking at the screen as if it were a disk and then
 // this disk is split into a number of slices centered at the origin. Each slice renders
@@ -35,7 +35,7 @@ varying vec2 uv_screen;
 // white color towards the end:
 const vec3 blue_col = vec3(0.3, 0.3, 0.5);
 //const vec3 white_col = vec3(0.95, 0.95, 1.0);
-const vec3 white_col = vec3(0.85, 0.85, 0.9);
+const vec3 white_col = vec3(0.0, 0.706, 0.0); //vec3(0.85, 0.85, 0.9);
 const vec3 flare_col = vec3(0.9, 0.9, 1.4);
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture; 
 uniform float u_time;

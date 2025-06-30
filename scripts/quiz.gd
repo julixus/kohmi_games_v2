@@ -8,6 +8,8 @@ var option_buttons
 var question_order = [0, 1, 2]
 var can_click = true
 const MAX_QUESTIONS = 10
+var shader_started = false
+var shader_time = 0
 @export var option_id = 0
 @onready var option_1: Button = $"VBoxContainer/Antwort Option"
 @onready var option_3: Button = $"VBoxContainer/Antwort Option3"
@@ -16,6 +18,7 @@ const MAX_QUESTIONS = 10
 @onready var score_label: Label = $Score
 @onready var help_ui: Control = $help_ui
 @onready var info_btn: Button = $info_btn
+@onready var shader_transition: ColorRect = $shader_transition
 
 
 func _ready() -> void:
@@ -26,6 +29,11 @@ func _ready() -> void:
 	new_question()
 	load_answers()
 	
+func _process(delta: float) -> void:
+	if shader_started:
+		shader_transition.visible = true
+		shader_time += delta
+		shader_transition.material.set_shader_parameter("u_time", shader_time)
 	
 func load_textures():
 	style_right.texture = load("res://res/Quiz-richtig.webp")
@@ -74,7 +82,10 @@ func handle_option_pressed(index):
 	else:
 		print("Das waren alle Fragen")
 		Global.quiz_score = score
-		wait(5)
+		shader_started = true
+		print("shader started")
+		shader_transition.material.set_shader_parameter("u_time", 0.0)
+		await wait(3)
 		get_tree().change_scene_to_file("res://scenes/outro.tscn")
 	
 func wait(seconds: float):

@@ -5,7 +5,7 @@ extends Node2D
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area_2d: Area2D = $Area2D
 @onready var pseudocode_kohmi: Sprite2D = $PseudocodeKohmi
-@onready var plakat_kohmi: Sprite2D = $PlakatKohmiGroeHand4kFinal
+@onready var vsp: VideoStreamPlayer = $VideoStreamPlayer
 
 var can_click = true
 const SPEED = 1
@@ -22,7 +22,7 @@ var lines = ["2 von 3 schon geschafft, herzlichen Glückwunsch!",
 			"...C",
 			"...B",
 			"...A",
-			"... allerdings kenne ich die Reihenfolge nicht. Naja.",
+			"... oder so irgendwie. Glaube ich. Allerdings kenne ich die Reihenfolge nicht. Naja.",
 			"Du machst das schon!",
 			"Übrigens: Ich habe inzwischen genug Kontrolle, um den Virus beliebig lange angreifbar zu machen, du hast also beim Quiz keinen Zeitdruck",
 			"Und jetzt los in den Endspurt!",
@@ -33,6 +33,11 @@ func _physics_process(delta: float) -> void:
 	if line_counter == 0:
 		await wait(1)
 	label.visible_characters += SPEED
+	
+	if !vsp.is_playing():
+		vsp.stream = load("res://res/Animations/Cycles-Kohmi-idle.ogv")
+		vsp.loop = true
+		vsp.play()
 
 func _ready() -> void:
 	label.visible_characters = 0
@@ -46,9 +51,18 @@ func _ready() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and can_click:
 		next_line()
-		if line_counter == 2:
-			pseudocode_kohmi.visible = false
-			plakat_kohmi.visible = true
+		if line_counter == 1:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-freuen.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 5:
+			vsp.stream = load("res://res/Animations/Cycles-Kohmi-thinking.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 12:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-approval.ogv")
+			vsp.loop = false
+			vsp.play()
 		if line_counter == len(lines)-1:
 			can_click = false
 			await fade_to_black()

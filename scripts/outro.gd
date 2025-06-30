@@ -4,9 +4,8 @@ extends Node2D
 @onready var sprecher: Label = $VBoxContainer/Sprecher
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area_2d: Area2D = $Area2D
-@onready var pseudocode_kohmi: Sprite2D = $PseudocodeKohmi
-@onready var plakat_kohmi: Sprite2D = $PlakatKohmiGroeHand4kFinal
-@onready var qr_code: Sprite2D = $"QR Code"
+@onready var vsp: VideoStreamPlayer = $VideoStreamPlayer
+
 
 var can_click = true
 var js = Engine.get_singleton("JavaScriptBridge")
@@ -35,13 +34,21 @@ func _physics_process(delta: float) -> void:
 	if line_counter == 0:
 		await wait(1)
 	label.visible_characters += SPEED
+	
+	if !vsp.is_playing():
+		vsp.stream = load("res://res/Animations/Cycles-Kohmi-idle.ogv")
+		vsp.loop = true
+		vsp.play()
 
 func _ready() -> void:
 	label.visible_characters = 0
 	print(lines[line_counter])
 	sprecher.text = "Kohmi"
 	label.text = ""	
-	qr_code.visible = false
+	
+	vsp.stream = load("res://res/Animations/Cycles-kohmi-freuen.ogv")
+	vsp.loop = false
+	vsp.play()
 	
 	await wait(1)
 	label.text = lines[line_counter]
@@ -49,6 +56,30 @@ func _ready() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and can_click:
 		next_line()
+		if line_counter == 0:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-freuen.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 5:
+			vsp.stream = load("res://res/Animations/Cycles-Kohmi-thinking.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 8:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-approval.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 10:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-disapproval.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 12:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-approval.ogv")
+			vsp.loop = false
+			vsp.play()
+		if line_counter == 14:
+			vsp.stream = load("res://res/Animations/Cycles-kohmi-wave.ogv")
+			vsp.loop = false
+			vsp.play()
 		if line_counter == len(lines)-1:
 			can_click = false
 			await fade_to_black()

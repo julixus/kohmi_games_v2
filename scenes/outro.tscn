@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqdmv070q68es"]
+[gd_scene load_steps=7 format=3 uid="uid://bqdmv070q68es"]
 
 [ext_resource type="Script" uid="uid://cwnn6p6v2xuhe" path="res://scripts/outro.gd" id="1_vmn6f"]
+[ext_resource type="VideoStream" uid="uid://rat0hrdbpfu7" path="res://res/Animations/Cycles-kohmi-wave.ogv" id="2_ya6b3"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="2_ydlee"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="3_ya6b3"]
-[ext_resource type="Texture2D" uid="uid://dfnnwrymuid5j" path="res://res/plakat_kohmi_groe_Hand4K_final.png" id="4_611wi"]
-[ext_resource type="Texture2D" uid="uid://bcffp0x0djf0n" path="res://res/Snake_Background.png" id="5_ydlee"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b11s"]
 bg_color = Color(0, 0, 0, 1)
@@ -31,6 +30,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0b11s")
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_7nwcv")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+clip_contents = true
+offset_left = -575.0
+offset_top = -402.0
+offset_right = 577.0
+offset_bottom = 246.0
+mouse_filter = 2
+stream = ExtResource("2_ya6b3")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = -568.0
 offset_top = 159.0
@@ -53,16 +61,6 @@ theme_override_fonts/normal_font = ExtResource("3_ya6b3")
 theme_override_font_sizes/normal_font_size = 21
 text = "sdsd"
 fit_content = true
-
-[node name="PlakatKohmiGroeHand4kFinal" type="Sprite2D" parent="."]
-position = Vector2(45, -70)
-scale = Vector2(0.228241, 0.228241)
-texture = ExtResource("4_611wi")
-
-[node name="QR Code" type="Sprite2D" parent="."]
-position = Vector2(347, 30)
-scale = Vector2(0.546875, 0.546875)
-texture = ExtResource("5_ydlee")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

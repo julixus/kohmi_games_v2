@@ -7,11 +7,15 @@ extends Node2D
 @onready var check_button: Button = $CheckButton
 @onready var info_btn: Button = $info_btn
 @onready var help_ui: Control = $help_ui
+@onready var shader_transition: ColorRect = $shader_transition
 
 var punkte : int = 0;
 var can_click = true
 var lives = 3
 var index = 1
+
+var shader_started = false
+var shader_time = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +32,11 @@ func _process(delta: float) -> void:
 	label.text = "Score: " + str(punkte)
 	countdown_label.text = str(roundi(timer.time_left)) + "s"
 	hp_label.text = str(lives) +"/3 HP"
+	
+	if shader_started:
+		shader_transition.visible = true
+		shader_time += delta
+		shader_transition.material.set_shader_parameter("u_time", shader_time)
 	
 	#if  index == 1:
 		#sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler2.jpg")
@@ -139,7 +148,9 @@ func _on_timer_timeout() -> void:
 	print("Zeit ist rum!")
 	can_click = false
 	Global.grafikfehler_score = punkte
-	await wait(5)
+	shader_started = true
+	shader_transition.material.set_shader_parameter("u_time", 0.0)
+	await wait(3)
 	get_tree().change_scene_to_file("res://scenes/zwischenseq_2.tscn")
 
 func wait(seconds: float):
