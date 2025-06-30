@@ -10,8 +10,10 @@ extends Node2D
 @onready var command_two: Label = $UI/Command_Label_Two
 @onready var countdown: Timer = $countdown
 @onready var help_ui: Control = $help_ui
+@onready var shader_transition: ColorRect = $shader_transition
 
-
+var shader_started = false
+var shader_time = 0
 var icon_pos_x = 279
 var icon_pos_y = 157
 var icon_rotation = 0
@@ -49,6 +51,7 @@ func _ready() -> void:
 	direction = "Up"
 	icon_pos_x = icon_start.x
 	icon_pos_y = icon_start.y
+	countdown.paused = true	
 	nextCode(0)
 	moveButton(0)
 
@@ -66,13 +69,10 @@ func _process(delta: float) -> void:
 		command_two.text = "\n\n\nfunc turnAround{\nfor(count:2){\nturnLeft();\n}\n}\n\nStart:\nturnAround();\nknightLeft();\nturnLeft();\nknightLeft();\nknightRight();\nturnAround();\nfor(count:4)\nknightRight();"
 	else: command_two.text = ""
 	
-	#TODO: kommt noch raus vor release
-	if Input.is_action_just_pressed("Move"):
-		moveForward()
-	if Input.is_action_just_pressed("TurnLeft"):
-			turnLeft()
-	if Input.is_action_just_pressed("TurnRight"):
-			turnRight()
+	if shader_started:
+		shader_transition.visible = true
+		shader_time += delta
+		shader_transition.material.set_shader_parameter("u_time", shader_time)
 	
 func _on_timer_timeout() -> void:
 	time_score += 1
@@ -282,11 +282,35 @@ func moveIcon(position: int):
 			can_click = false
 			moveForward()
 			await wait(delay)
+			turnRight()
+			await wait(delay)
 			moveForward()
 			await wait(delay)
 			turnRight()
 			await wait(delay)
 			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			turnRight()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
+			await wait(delay)
+			moveForward()
 			await wait(delay_end)
 			can_click = true
 		8:
@@ -488,6 +512,8 @@ func _on_countdown_timeout() -> void:
 	print("Zeit ist rum")
 	can_click = false
 	Global.pseudocode_score = score
+	shader_started = true
+	shader_transition.material.set_shader_parameter("u_time", 0.0)
 	await wait(3)
 	get_tree().change_scene_to_file("res://scenes/zwischenseq_1.tscn")
 
@@ -497,6 +523,5 @@ func _on_info_btn_pressed() -> void:
 	countdown.paused = true	
 
 func _on_ok_button_pressed() -> void:
-	print("ok button toggled")
 	help_ui.visible = false
 	countdown.paused = false

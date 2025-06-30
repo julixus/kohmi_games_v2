@@ -22,3 +22,4 @@ mono_crash.*.json
 /android/
 
 # End of https://www.toptal.com/developers/gitignore/api/godot
+/export

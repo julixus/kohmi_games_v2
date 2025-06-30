@@ -8,9 +8,8 @@ extends Node2D
 @onready var ajf_btn: Button = $HBoxContainer2/ajf_btn
 @onready var color_rect: ColorRect = $ColorRect
 @onready var area_2d: Area2D = $Area2D
-@onready var telefon_btn: Button = $Container/telefon_btn
-@onready var telefon_video: VideoStreamPlayer = $Container/telefon_video
-@onready var telefon_rect: TextureRect = $Container/telefon_rect
+@onready var telefon_btn: Button = $telefon_btn
+@onready var loop_bg: VideoStreamPlayer = $loop_bg
 
 
 var started = false
@@ -52,7 +51,7 @@ func _ready() -> void:
 	ajf_btn.visible = false
 	label.visible_characters = 0
 	color_rect.modulate.a = 1
-	telefon_rect.texture = telefon_video.get_video_texture()
+
 	sprecher.text = "*Unbekannt*"
 	label.text = ""	
 
@@ -129,6 +128,6 @@ func wait(seconds: float):
 func _on_telefon_btn_pressed() -> void:
 	color_rect.modulate.a = 0
 	telefon_btn.visible = false
-	telefon_rect.visible = false
-	telefon_video.paused = true
+	loop_bg.paused = true
+	loop_bg.visible = false
 	started = true

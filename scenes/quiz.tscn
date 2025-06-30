@@ -189,7 +189,6 @@ alignment = 0
 script = null
 
 [node name="help_ui" type="Control" parent="."]
-visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0

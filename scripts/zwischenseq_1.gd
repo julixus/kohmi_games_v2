@@ -6,11 +6,12 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var pseudocode_kohmi: Sprite2D = $PseudocodeKohmi
 @onready var plakat_kohmi: Sprite2D = $PlakatKohmiGroeHand4kFinal
-@onready var video_stream_player: VideoStreamPlayer = $VideoStreamPlayer
+@onready var vsp: VideoStreamPlayer = $VideoStreamPlayer
 
 var can_click = true
 const SPEED = 1
 var line_counter = 0
+var waving_done = false
 			#0
 var lines = ["Wilkommen zurück, das hast du ja gut gemeistert!",
 			"Dank dir habe ich jetzt wieder genug Kontrolle zurückerlangt, dass ich mir dir auch zeigen kann...",
@@ -28,6 +29,11 @@ func _physics_process(delta: float) -> void:
 	if line_counter == 0:
 		await wait(1)
 	label.visible_characters += SPEED
+	
+	if !vsp.is_playing() and waving_done:
+				vsp.stream = load("res://res/Animations/Cycles-Kohmi-idle.ogv")
+				vsp.loop = true
+				vsp.play()
 
 func _ready() -> void:
 	label.visible_characters = 0
@@ -43,7 +49,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		next_line()
 		if line_counter == 2:
 			pseudocode_kohmi.visible = false
-			plakat_kohmi.visible = true
+			vsp.play()
+			waving_done = true
 		if line_counter == len(lines)-1:
 			can_click = false
 			await fade_to_black()

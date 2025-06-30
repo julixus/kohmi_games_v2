@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://g3yb1qrf5bnm"]
+[gd_scene load_steps=40 format=3 uid="uid://g3yb1qrf5bnm"]
 
 [ext_resource type="Script" uid="uid://o5a8r1v4mesh" path="res://scripts/pseudocode.gd" id="1_n8srr"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_11llr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://df04881s4ij2n" path="res://res/Quiz-Hover.webp" id="7_2dgal"]
 [ext_resource type="Texture2D" uid="uid://c3ux20ag684ko" path="res://res/Quiz-Normal.webp" id="7_gvvvs"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="8_2dgal"]
+[ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="10_imxnl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5o0ki"]
 bg_color = Color(0, 0, 0, 1)
@@ -72,6 +73,10 @@ texture = ExtResource("7_2dgal")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyrb0"]
 texture = ExtResource("7_gvvvs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n08hw"]
+shader = ExtResource("10_imxnl")
+shader_parameter/u_time = 0.0
 
 [node name="Pseudocode" type="Node2D"]
 position = Vector2(184, 181)
@@ -239,13 +244,11 @@ scale = Vector2(0.0319922, 0.0319922)
 texture = ExtResource("4_5o0ki")
 
 [node name="countdown" type="Timer" parent="."]
-wait_time = 180.0
-one_shot = true
+wait_time = 5.0
 autostart = true
 
 [node name="help_ui" type="Control" parent="."]
-visible = false
-z_index = 2
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -318,6 +321,16 @@ Klicke das Feld an, in dem Kohmi sein wird, nachdem der ganze Code rechts ausgef
 Rechts oben siehst du deinen Score und die Zeit, die du noch übrig hast. Während dieser Text zu sehen ist, wird der Countdown angehalten."
 autowrap_mode = 3
 metadata/_edit_lock_ = true
+
+[node name="shader_transition" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_n08hw")
+offset_left = -592.0
+offset_top = -345.0
+offset_right = 588.0
+offset_bottom = 336.0
+mouse_filter = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="PseudoBg/Tile_Area" to="." method="_on_tile_area_area_entered"]

@@ -19,6 +19,8 @@ func _ready() -> void:
 	sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler2.jpg")
 	check_button.size = Vector2(90, 24)
 	check_button.position = Vector2(94, -9)
+	timer.paused = true	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 		
 	if  index == 2:
 		sprite_2d.texture = ResourceLoader.load("res://res/Grafikfehler_images/Grafikfehler3.jpg")
-		check_button.size = Vector2(66, -24)
+		check_button.size = Vector2(66, 24)
 		check_button.position = Vector2(183, -69)
 		
 	if  index == 3:
@@ -132,13 +134,6 @@ func _process(delta: float) -> void:
 		check_button.size = Vector2(121, 24)
 		check_button.position = Vector2(-97, 197)
 
-
-#func _on_check_button_toggled(toggled_on: bool) -> void:
-	#if can_click:
-		#await show_solution()
-		#punkte = punkte + 1
-		#index += 1
-		#lives = 3
 
 func _on_timer_timeout() -> void:
 	print("Zeit ist rum!")
