@@ -1,5 +1,14 @@
 # Patch Notes
 
+## v6:
+	- Der Spieler wird nach seinem Namen gefragt
+
+## v5:
+	- Grafikfehler falsch Feedback
+	
+	Bugfixes
+	- Countdown bei Pseudocode bei 5 statt 150 Sekunden
+
 ## v4:
 	- Hyperspace Transition nach allen games hinzugefügt
 	- Alle Zwischensequenzen haben ein Animationen statt Bild

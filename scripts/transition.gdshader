@@ -21,7 +21,7 @@ const float MAX_SLICE_OFFSET = 0.4;
 
 // This is the length of the effect in seconds:
 const float T_MAX = 3.0;
-// T_JUMP is in normalized [0..1] time: this is the time when the 
+// T_JUMP is in normalized [0..1] time: this is the time when the
 // trails zoom out of view because we've jumped into hyperspace:
 const float T_JUMP = 0.75;
 // This is the speed during the final jump:
@@ -30,14 +30,14 @@ const float jump_speed = 15.0;
 const vec2 iResolution = vec2(1152, 648);
 varying vec2 uv_screen;
 
-// I've noticed that the effect tends to have a bluish tint. In this 
-// shader, the blue color is towards the start of the trail, and the 
+// I've noticed that the effect tends to have a bluish tint. In this
+// shader, the blue color is towards the start of the trail, and the
 // white color towards the end:
 const vec3 blue_col = vec3(0.3, 0.3, 0.5);
 //const vec3 white_col = vec3(0.95, 0.95, 1.0);
-const vec3 white_col = vec3(0.0, 0.706, 0.0); //vec3(0.85, 0.85, 0.9);
-const vec3 flare_col = vec3(0.9, 0.9, 1.4);
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture; 
+const vec3 white_col = vec3(0.0, 0.706, 0.0); //vec3(0.0, 0.706, 0.0);
+const vec3 flare_col = vec3(0.9, 0.9, 1.4); //ec3(0.9, 0.9, 1.4);
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
 uniform float u_time;
 
 
@@ -65,7 +65,7 @@ float rand(vec2 co){
 
 /*
 	Lens flare from: https://www.shadertoy.com/view/XdfXRX
-	and: https://www.shadertoy.com/view/4sX3Rs 
+	and: https://www.shadertoy.com/view/4sX3Rs
 */
 vec3 lensflare(vec3 uv, vec3 pos, float flare_size, float ang_offset)
 {
@@ -78,7 +78,7 @@ vec3 lensflare(vec3 uv, vec3 pos, float flare_size, float ang_offset)
 	float ang = atan(main.y, main.x) + ang_offset;
     float fade = (z < 0.0) ? -z : 1.0;
     //if (z < 0.0) return vec3(0.0);
-    
+
     float f0 = 1.0/(dist * inv_size + 1.0);
     f0 = f0 + f0 * (0.1 * sin((sin(ang*2.0 + pos.x)*4.0 - cos(ang*3.0 + pos.y)) * num_points) + disk_size);
     if (z < 0.0)
@@ -100,49 +100,49 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 p = (2.0 * fragCoord.xy - iResolution.xy) / min(iResolution.x, iResolution.y);
     //vec2 mo = (2.0 * iMouse.xy - iResolution.xy) / min(iResolution.x, iResolution.y);
     p += vec2(0, -0.2); // In XWA the aiming HUD is not at the screen's center
-    
+
     float ta = TAU * mod(TIME, 8.0) / 8.0;
     //ta = 12.0 * 0.01745;
-    
+
     float ay = 0.0, ax = 0.0, az = 0.0;
-    
+
     //p += vec2(0.0, -0.1); // + 12.0*m;
     //p = (mX * vec3(p, 1.0)).xy;
-    
+
     float p_len = length(p);
     vec3 v = vec3(p, 1.0);
-    
+
     // The following line reverts the effect:
     //t = 1.0 - t;
     // DEBUG
     //t = 0.5;
     // DEBUG
-    
+
     //float[4] flare_size;
     //flare_size[0] = 0.0
-    
+
     float trail_start, trail_end;
     // Fade all the trails into view from black to a little above full-white:
     float fade = clamp(mix(0.1, 1.1, t * 2.0), 0.0, 2.0);
     //fade = 1.0;
-    
+
     // Each slice renders a single trail; but we can render multiple layers of
     // slices to add more density and randomness to the effect:
-	for(float i = 0.0; i < 80.0; i++) 
+	for(float i = 0.0; i < 80.0; i++)
     //float i = 1.0;
     {
         vec3 trail_color = vec3(0.0);
 		//float angle = (atan(v.y, v.x) / 3.141592 / 3.0 + 0.5);
         float angle = atan(v.y, v.x) / 3.141592 / 2.0 + 0.13 * i;
-        
+
 		float slice = floor(angle * NUM_SLICES);
         float slice_fract = fract(angle * NUM_SLICES);
-        
+
         // Don't center the trail in the slice: wiggle it a little bit:
-        float slice_offset = MAX_SLICE_OFFSET * 
+        float slice_offset = MAX_SLICE_OFFSET *
             rand(vec2(slice, 4.0 + i * 25.0)) - (MAX_SLICE_OFFSET / 2.0);
-        
-        
+
+
         // Without dist, all trails get stuck to the walls of the
         // tunnel.
         //float dist = rand(vec2(slice, 1.0 + i * 10.0)) * (2.0 + i);
@@ -154,35 +154,35 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         // This is the speed of the current slice
         float fspeed = f * (0.1 * rand(vec2(slice, 1.0 + i * 10.0)) + i * 0.01);
         float fjump_speed = f * jump_speed;
-        
+
 		//trail_start = 5.0 + 2.0 * rand(vec2(slice, 0.0 + i * 10.0));
         trail_start = 10.0 * rand(vec2(slice, 0.0 + i * 10.0)) - 5.0;
-        
+
         // Accelerate the trail_start:
         trail_start -= mix(0.0, fjump_speed, smoothstep(T_JUMP, 1.0, t));
         trail_end = trail_start - t * fspeed;
-        
+
         //float trail_x = smoothstep(trail_start, trail_end, p_len);
         float trail_x = smoothstep(trail_start, trail_end, z);
         trail_color = mix(blue_col, white_col, trail_x);
-        
+
         // This line computes the distance from the current pixel, in "slice-coordinates"
         // to the ideal trail centered at the slice center. The last argument makes the lines
         // a bit thicker when they reach the edges as time progresses.
         float h = sdLine(
             vec2(slice_fract + slice_offset, z),
-            vec2(0.5, trail_start), 
+            vec2(0.5, trail_start),
             vec2(0.5, trail_end),
             //0.0);
 	       	mix(0.0, 0.015, t * z));
-        
+
         //h = smoothstep(0.075, 0.01, abs(h) - 0.05);
         // This threshold adds a "glow" to the line. This glow grows with
         // time:
         //float threshold = mix(0.04, 0.175, smoothstep(0.0, 0.5, t));
         float threshold = 0.09;
         h = (h < 0.01) ? 1.0 : 0.85 * smoothstep(threshold, 0.0, abs(h));
-        
+
         trail_color *= fade * h;
         // DEBUG
         // This part displays the size of each slice.
@@ -191,7 +191,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
         //    r = 1.0;
         //trail_color = vec3(h, h, h);
         // DEBUG
-        
+
         // Accumulate this trail with the previous ones
         color = max(color, trail_color);
 	}

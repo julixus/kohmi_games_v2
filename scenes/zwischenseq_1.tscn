@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dswee26hnmi1c"]
+[gd_scene load_steps=10 format=3 uid="uid://dswee26hnmi1c"]
 
 [ext_resource type="Script" uid="uid://btakwqdwhlydw" path="res://scripts/zwischenseq_1.gd" id="1_c3oco"]
 [ext_resource type="FontFile" uid="uid://b0b1gnpcewoxk" path="res://res/CONSOLAB.TTF" id="2_s0x26"]
@@ -12,6 +12,10 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_080af"]
 size = Vector2(1156, 650)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s0x26"]
+color = Color(0, 0.705882, 0, 1)
+thickness = 4
 
 [node name="zwischenseq_1" type="Node2D"]
 script = ExtResource("1_c3oco")
@@ -61,7 +65,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0.737255, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_c46cf")
 theme_override_font_sizes/normal_font_size = 21
-text = "sdsd"
+text = "Wie heißt du eigentlich?"
 fit_content = true
 
 [node name="PseudocodeKohmi" type="Sprite2D" parent="."]
@@ -75,6 +79,27 @@ position = Vector2(45, -70)
 scale = Vector2(0.228241, 0.228241)
 texture = ExtResource("5_6si2d")
 
+[node name="player_name_container" type="HBoxContainer" parent="."]
+visible = false
+offset_left = -461.0
+offset_top = 236.0
+offset_right = -241.0
+offset_bottom = 276.0
+
+[node name="Label" type="Label" parent="player_name_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c46cf")
+theme_override_font_sizes/font_size = 21
+text = "Ich heiße:"
+
+[node name="LineEdit" type="LineEdit" parent="player_name_container"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c46cf")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxLine_s0x26")
+placeholder_text = "Name"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 offset_left = -598.0
@@ -86,3 +111,5 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="editing_toggled" from="player_name_container/LineEdit" to="." method="_on_line_edit_editing_toggled"]
+[connection signal="text_submitted" from="player_name_container/LineEdit" to="." method="_on_line_edit_text_submitted"]

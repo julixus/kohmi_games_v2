@@ -8,6 +8,7 @@ extends Node2D
 @onready var info_btn: Button = $info_btn
 @onready var help_ui: Control = $help_ui
 @onready var shader_transition: ColorRect = $shader_transition
+@onready var wrong_rect: ColorRect = $wrong_rect
 
 var punkte : int = 0;
 var can_click = true
@@ -32,6 +33,9 @@ func _process(delta: float) -> void:
 	label.text = "Score: " + str(punkte)
 	countdown_label.text = str(roundi(timer.time_left)) + "s"
 	hp_label.text = str(lives) +"/3 HP"
+	
+	if timer.time_left < 20:
+		countdown_label.add_theme_color_override("font_color", Color.RED)
 	
 	if shader_started:
 		shader_transition.visible = true
@@ -158,10 +162,16 @@ func wait(seconds: float):
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if (event is InputEventMouseButton && event.pressed):
-		if lives > 1:
-			lives -= 1
-		else:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and can_click:
+	
+		# rotes Flackern bei falschem Klicken:
+		#var fadeTween = get_tree().create_tween()
+		#fadeTween.tween_property(wrong_rect, "modulate:a", 0.3, 0.2)
+		#fadeTween.tween_property(wrong_rect, "modulate:a", 0.0, 0.1)
+		
+		lives -= 1
+		changeHPColor()
+		if lives == 0:
 			await show_solution()
 			index += 1
 			lives = 3
@@ -174,7 +184,7 @@ func show_solution():
 	rect.color = Color.GREEN
 	rect.modulate = Color(0.0, 0.853, 0.0, 0.5)
 	add_child(rect)
-	await wait(1)
+	await wait(1.5)
 	rect.queue_free()
 
 
@@ -194,3 +204,8 @@ func _on_ok_button_pressed() -> void:
 	print("ok button toggled")
 	help_ui.visible = false
 	timer.paused = false
+	
+func changeHPColor():
+	hp_label.add_theme_color_override("font_color", Color.RED)
+	await wait(1.5)
+	hp_label.add_theme_color_override("font_color", Color(0.0, 0.853, 0.0))

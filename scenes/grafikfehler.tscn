@@ -183,6 +183,16 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rrvdo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_2xccx")
 text = "?"
 
+[node name="wrong_rect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+offset_left = -431.0
+offset_top = -200.0
+offset_right = 433.0
+offset_bottom = 294.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
 [node name="help_ui" type="Control" parent="."]
 z_index = 1
 layout_mode = 3
@@ -254,7 +264,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_kjurm")
 theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxTexture_llcob")
-text = "Du siehst eine Reihe von verschiedenen Wörtern in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden.
+text = "Du siehst viele verschiedene Wörter in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden.
 
 Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  Während dieser Text zu sehen ist, wird der Countdown angehalten.
 Du kannst diesen Text jederzeit mit dem Infobutton oben links aufrufen."

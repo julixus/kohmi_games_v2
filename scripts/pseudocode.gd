@@ -58,6 +58,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	header.text = str(roundi(countdown.time_left)) + "s"
+	if countdown.time_left < 20:
+		header.add_theme_color_override("font_color", Color.RED)
 	score_label.text = str(score)
 	
 	icon.position = Vector2(icon_pos_x, icon_pos_y)

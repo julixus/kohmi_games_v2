@@ -12,7 +12,7 @@ var js = Engine.get_singleton("JavaScriptBridge")
 const SPEED = 1
 var line_counter = 0
 			#0
-var lines = ["Einwandfreie Arbeit Kollege, das hätte ich selbst kaum besser machen können.",
+var lines = ["Einwandfreie Arbeit " + Global.player_name + ", das hätte ich selbst kaum besser machen können.",
 			"Die zweite Frage war schon echt hart, oder?",
 			"Wie dem auch sei, ich muss dir ein Geheimnis verraten.",
 			"Ich hatte schon von Anfang an etwas mehr Kontrolle als ich dir gesagt habe.",

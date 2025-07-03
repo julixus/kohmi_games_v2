@@ -268,7 +268,7 @@ scale = Vector2(0.0319922, 0.0319922)
 texture = ExtResource("7_edkps")
 
 [node name="countdown" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 150.0
 autostart = true
 
 [node name="help_ui" type="Control" parent="."]
