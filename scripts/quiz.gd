@@ -19,6 +19,7 @@ var shader_time = 0
 @onready var help_ui: Control = $help_ui
 @onready var info_btn: Button = $info_btn
 @onready var shader_transition: ColorRect = $shader_transition
+@onready var loop_bg: VideoStreamPlayer = $loop_bg
 
 
 func _ready() -> void:

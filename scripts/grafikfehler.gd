@@ -175,6 +175,9 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			await show_solution()
 			index += 1
 			lives = 3
+			if punkte > 0:
+				changeScoreColor()
+				punkte -= 1
 
 func show_solution():
 	print("show")
@@ -209,3 +212,8 @@ func changeHPColor():
 	hp_label.add_theme_color_override("font_color", Color.RED)
 	await wait(1.5)
 	hp_label.add_theme_color_override("font_color", Color(0.0, 0.853, 0.0))
+	
+func changeScoreColor():
+	label.add_theme_color_override("font_color", Color.RED)
+	await wait(1.5)
+	label.add_theme_color_override("font_color", Color(0.0, 0.853, 0.0))
