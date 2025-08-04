@@ -265,9 +265,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_kjurm")
 theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxTexture_llcob")
-text = "Du siehst viele verschiedene Wörter in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden.
+text = "Du siehst viele verschiedene Wörter in einer Schriftart. Ein einzelnes Wort davon hat eine andere Schriftart. Klicke das Wort mit der anderen Schriftart an. Du hast für jedes Wort 3 Versuche, es zu finden. Aber vorsicht, wenn du alle Versuche aufbrauchst, verlierst du einen Punkt!
 
-Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  Während dieser Text zu sehen ist, wird der Countdown angehalten.
+Rechts oben siehst du deinen Score, die Zeit, die du noch übrig hast, und deine Leben.  
+Während dieser Text zu sehen ist, wird der Countdown angehalten.
 Du kannst diesen Text jederzeit mit dem Infobutton oben links aufrufen."
 autowrap_mode = 3
 metadata/_edit_lock_ = true

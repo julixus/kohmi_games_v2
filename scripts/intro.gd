@@ -49,6 +49,7 @@ func _ready() -> void:
 	nein_btn.visible = false
 	nat_btn.visible = false
 	ajf_btn.visible = false
+	loop_bg.loop = true
 	label.visible_characters = 0
 	color_rect.modulate.a = 1
 
