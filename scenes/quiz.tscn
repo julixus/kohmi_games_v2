@@ -121,7 +121,6 @@ autoplay = true
 script = ExtResource("4_lcje5")
 
 [node name="QuizBg2" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(575, 319)
 scale = Vector2(0.58758, 0.58758)
 texture = ExtResource("4_06ax7")
@@ -210,6 +209,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wsttk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d56me")
 
 [node name="help_ui" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0

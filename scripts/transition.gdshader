@@ -1,4 +1,7 @@
 shader_type canvas_item;
+
+// Diesen Shader haben wir von https://www.shadertoy.com/view/3l3Gz8
+
 /*
 	Simplified and adapted from:
 	https://www.shadertoy.com/view/MlKBWw
