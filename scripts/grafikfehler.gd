@@ -1,6 +1,6 @@
 extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var label: Label = $Label
+@onready var label: Label = $score_label
 @onready var countdown_label: Label = $Countdown_label
 @onready var timer: Timer = $Timer
 @onready var hp_label: Label = $hp_label

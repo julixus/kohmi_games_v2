@@ -1,7 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://dtploqh4yxqgy"]
+[gd_scene load_steps=45 format=3 uid="uid://dtploqh4yxqgy"]
 
 [ext_resource type="PackedScene" uid="uid://betch04yfac52" path="res://scenes/antwort_option.tscn" id="1_36y45"]
-[ext_resource type="Texture2D" uid="uid://be8j0srshr0co" path="res://res/quiz_bg.webp" id="1_w5ac1"]
 [ext_resource type="Script" uid="uid://b3qcemqfvff2x" path="res://scripts/quiz.gd" id="1_xq7j8"]
 [ext_resource type="FontFile" uid="uid://modbqwkkpyfv" path="res://res/CONSOLA.TTF" id="2_xq7j8"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="3_t0h63"]
@@ -18,9 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dayxudbyhl5ng" path="res://res/OK-Standard.png" id="14_wsttk"]
 [ext_resource type="Texture2D" uid="uid://b0ja2l6cowd4j" path="res://res/Wie_geht_dieses_Spiel.png" id="15_24vnv"]
 [ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="18_d56me"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq7j8"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0h63"]
 content_margin_left = 20.0
@@ -112,19 +108,6 @@ shader_parameter/u_time = 0.0
 [node name="Quiz" type="Node2D"]
 script = ExtResource("1_xq7j8")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 1182.0
-offset_bottom = 667.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xq7j8")
-
-[node name="QuizBg" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(576.341, 324.25)
-scale = Vector2(0.923131, 0.923131)
-texture = ExtResource("1_w5ac1")
-metadata/_edit_lock_ = true
-
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
 self_modulate = Color(1, 1, 1, 0.784314)
@@ -138,6 +121,7 @@ autoplay = true
 script = ExtResource("4_lcje5")
 
 [node name="QuizBg2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(575, 319)
 scale = Vector2(0.58758, 0.58758)
 texture = ExtResource("4_06ax7")

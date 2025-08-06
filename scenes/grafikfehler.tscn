@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dnxd53knhx4vo"]
+[gd_scene load_steps=34 format=3 uid="uid://dnxd53knhx4vo"]
 
 [ext_resource type="Script" uid="uid://bmqjmjihcd73i" path="res://scripts/grafikfehler.gd" id="1_ewubi"]
 [ext_resource type="VideoStream" uid="uid://b05867q6hfd0t" path="res://res/Videos/games_bg_intro.ogv" id="2_kjurm"]
@@ -13,9 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dayxudbyhl5ng" path="res://res/OK-Standard.png" id="9_rrvdo"]
 [ext_resource type="Texture2D" uid="uid://b0ja2l6cowd4j" path="res://res/Wie_geht_dieses_Spiel.png" id="10_2xccx"]
 [ext_resource type="Shader" uid="uid://cm7i0y5dtbqe5" path="res://scripts/transition.gdshader" id="13_cryd0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih0h6"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xvta"]
 
@@ -78,23 +75,6 @@ script = ExtResource("1_ewubi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = -593.0
-offset_top = -338.0
-offset_right = 589.0
-offset_bottom = 336.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ih0h6")
-
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
 self_modulate = Color(1, 1, 1, 0.784314)
@@ -108,14 +88,8 @@ autoplay = true
 script = ExtResource("3_dsqeu")
 
 [node name="GrafikfehlerBg" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-0.56332, 5.72205e-06)
 scale = Vector2(0.588341, 0.588341)
-texture = ExtResource("3_w5lux")
-
-[node name="GrafikBg" type="Sprite2D" parent="."]
-position = Vector2(-0.999998, 0)
-scale = Vector2(0.588211, 0.58821)
 texture = ExtResource("3_w5lux")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -135,7 +109,6 @@ action_mode = 0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(2, 45)
 shape = SubResource("RectangleShape2D_db7sa")
 
@@ -159,7 +132,7 @@ theme_override_fonts/font = ExtResource("4_kjurm")
 theme_override_font_sizes/font_size = 25
 text = "180s"
 
-[node name="Label" type="Label" parent="."]
+[node name="score_label" type="Label" parent="."]
 offset_left = 313.0
 offset_top = -235.0
 offset_right = 437.0
@@ -184,17 +157,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_rrvdo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_2xccx")
 text = "?"
 
-[node name="wrong_rect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-z_index = 2
-offset_left = -431.0
-offset_top = -200.0
-offset_right = 433.0
-offset_bottom = 294.0
-mouse_filter = 2
-color = Color(1, 0, 0, 1)
-
 [node name="help_ui" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
